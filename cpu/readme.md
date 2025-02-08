@@ -3,13 +3,24 @@
 Implement the tasks in Rust and run them on multi-core CPUs.
 
 
-## Build
+## C++ Version
+
+### Build
+
+- Install [cmake](https://cmake.org/) on your system.
+- Run the command `cargo build --release`.
+
+
+## Rust Version
+
+
+### Build
 
 - Install [cargo](https://doc.rust-lang.org/stable/cargo/) on your system.
 - Run the command `cargo build --release`.
 
 
-## Usage
+### Usage
 
 Run the command:
 
@@ -30,3 +41,4 @@ where
 - `<i>` is the number of times that the computation must be repeated. The execution time reported
   by the program is the arithmetic mean of the duration of all iterations. Default: 1
 - `<c>` is the number of threads. Default: 1
+
