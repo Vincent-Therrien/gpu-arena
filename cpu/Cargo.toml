@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+clap = { version = "4.5.26", features = ["derive"] }
+ndarray = { version = "0.16.0", default-features = false }
+ndarray-rand = "0.15.0"
+floating-duration = "0.1.2"

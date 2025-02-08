@@ -21,9 +21,9 @@ directory, all programs are intended to run on GPUs.
 
 Each example can execute the following tasks:
 
-1. Calculate the sum of elements in a 1D array.
-2. Multiply two matrices.
-3. Softmax function on a 1D array.
+1. Calculate the sum of elements in a 1D array. Primary example.
+2. Multiply two matrices (low-priority).
+3. Softmax function on a 1D array (low-priority).
 
 Refer to the `readme` file in each subdirectory for instructions to run the examples.
 
