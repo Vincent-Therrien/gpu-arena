@@ -6,7 +6,7 @@ use floating_duration::TimeAsFloat;
 use std::thread;
 use std::sync::Arc;
 
-fn parallel_sum(numbers: Vec<f64>, num_threads: usize) -> f64 {
+fn parallel_sum(numbers: Vec<f32>, num_threads: usize) -> f32 {
     let numbers = Arc::new(numbers);
     let chunk_size = (numbers.len() + num_threads - 1) / num_threads;
     let mut handles = Vec::new();
@@ -14,7 +14,7 @@ fn parallel_sum(numbers: Vec<f64>, num_threads: usize) -> f64 {
     for i in 0..num_threads {
         let numbers = Arc::clone(&numbers);
         handles.push(thread::spawn(move || {
-            numbers.iter().skip(i * chunk_size).take(chunk_size).sum::<f64>()
+            numbers.iter().skip(i * chunk_size).take(chunk_size).sum::<f32>()
         }));
     }
 

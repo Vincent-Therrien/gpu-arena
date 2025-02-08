@@ -6,6 +6,8 @@
 
 ## A Guided Tour of GPU Frameworks
 
+Programming GPUs is a challenge - learn how to do it here!
+
 Each directory of this project is a self-contained program that shows how to (1) install a GPU
 programming framework, (2) build the program, and (3) execute it. With the exception of the `cpu`
 directory, all programs are intended to run on GPUs.

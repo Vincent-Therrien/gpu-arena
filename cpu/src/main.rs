@@ -1,5 +1,7 @@
 use clap::Parser;
 mod task1;
+mod task2;
+mod task3;
 
 /// Execute a multi-core accelerated program.
 #[derive(Parser)]
@@ -45,6 +47,8 @@ fn main() {
     for _ in 0..iterations {
         let duration = match &task {
             1 => task1::task_1(n, threads),
+            2 => task2::task_2(n, threads),
+            3 => task3::task_3(n, threads),
             _ => panic!("Invalid task."),
         };
         total_duration += duration;
