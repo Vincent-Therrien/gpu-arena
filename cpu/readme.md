@@ -15,11 +15,17 @@ Run the command:
 
 ```
 # Linux
-./target/release/cpu --task <n>
+./target/release/cpu --task <t> --n <n> --iterations <i> --thread <c>
 
 # Windows
-target\release\cpu --task <n>
+target\release\cpu --task <t> --n <n> --iterations <i> --thread <c>
 ```
 
-where `<n>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute.
-Refer to the [root readme file](../readme.md) to view the tasks.
+where
+
+- `<t>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute
+  (refer to the [root readme file](../readme.md) to view the tasks). Default: 1
+- `<n>` is the dimension of the input data. Default: 100
+- `<i>` is the number of times that the computation must be repeated. The execution time reported
+  by the program is the arithmetic mean of the duration of all iterations. Default: 1
+- `<c>` is the number of threads. Default: 1

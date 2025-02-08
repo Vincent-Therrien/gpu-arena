@@ -6,12 +6,12 @@
 
 ## A Guided Tour of GPU Frameworks
 
-Learn to select the best GPU framework for your use case. Each directory of this project is a
-self-contained example that shows how to (1) install the framework, (2) build the example, and (3)
-execute it. With the exception of the `cpu` directory, all examples are intended to run on GPUs.
+Each directory of this project is a self-contained program that shows how to (1) install a GPU
+programming framework, (2) build the program, and (3) execute it. With the exception of the `cpu`
+directory, all programs are intended to run on GPUs.
 
 
-### Index
+### Program Index
 
 - [CPU](cpu/readme.md): A baseline example intended to run on a multi-core **CPU**.
 - [OpenCL](opencl/readme.md):
