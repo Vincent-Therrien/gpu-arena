@@ -38,7 +38,7 @@ Run the Python script `benchmark.py` to build and execute all examples:
 # Linux
 python3 benchmark.py
 
-# Windows
+# OS that begins with the letter W
 py benchmark.py
 ```
 

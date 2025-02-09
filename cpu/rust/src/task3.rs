@@ -23,10 +23,10 @@ fn parallel_softmax(numbers: Vec<f32>, num_threads: usize) -> f32 {
 
 /// Task 3: Softmax function.
 pub fn task_3(n: u32, threads: u32) -> f64 {
-    let data = Array::random((n as usize, ), Uniform::new(-10.0, 10.0));
+    let data = Array::random((n as usize, ), Uniform::new(-10.0, 10.0)).to_vec();
     let now = Instant::now();
     {
-        parallel_softmax(data, threads);
+        parallel_softmax(data, threads as usize);
     }
     now.elapsed().as_fractional_secs()
 }
