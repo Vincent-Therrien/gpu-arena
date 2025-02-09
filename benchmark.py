@@ -13,11 +13,12 @@ import matplotlib.pyplot as plt
 
 BACKEND = "cpu-rust"
 TASK = "1"
-MIN_N = 10
+MIN_N = 10_000
 MAX_N = 10_000_000
 ITERATIONS = 5
 
-if BACKEND == "cpu":
+
+def cpu_cpp():
     os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/cpp")
     try:
         subprocess.check_call(["mkdir", "build"])
@@ -59,7 +60,8 @@ if BACKEND == "cpu":
     ax.legend()
     plt.show()
 
-elif BACKEND == "cpu-rust":
+
+def cpu_rust():
     os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/rust")
     x = []
     durations = {1: [], 2: [], 4: [], 8: []}
@@ -94,3 +96,8 @@ elif BACKEND == "cpu-rust":
     ax.legend()
     plt.show()
 
+
+if BACKEND == "cpu-cpp":
+    cpu_cpp()
+elif BACKEND == "cpu-rust":
+    cpu_rust()
