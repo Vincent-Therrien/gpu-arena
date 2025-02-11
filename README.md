@@ -1,38 +1,37 @@
 # gpu-arena
 
 - [English (en)](#a-guided-tour-of-gpu-frameworks)
-- [Français (fr)](#visite-guidée-de-cadres-logiciels-pour-gpu)
+- [Français (fr)](#visite-guidée-de-cadres-logiciels-pour-processeurs-graphiques)
 
 
-## A Guided Tour of GPU Frameworks
+## A Guided Tour of GPU Programming Frameworks
 
-Programming GPUs is a challenge - learn how to do it here!
+Programming GPUs is challenging - learn how to do it here.
 
-Each directory of this project is a self-contained program that shows how to (1) install a GPU
-programming framework, (2) build the program, and (3) execute it. With the exception of the `cpu`
-directory, all programs are intended to run on GPUs.
+This repository comprises self-contained projects that show how to install a GPU programming
+framework, build a GPU-accelerated program, and execute it. Refer to the `readme` file in each
+subdirectory for the instructions.
 
 
-### Program Index
+### Framework Index
 
-- [CPU](cpu/readme.md): A baseline example intended to run on a multi-core **CPU**.
+- [CPU](cpu/readme.md): A baseline example intended to run on a multi-core **CPU**. Comprises two
+  variants written in C++ and Rust.
 - [OpenCL](opencl/readme.md):
 
 
-### Tasks
+### Computing Tasks
 
-Each example can execute the following tasks:
+Each project in this repository can execute the following tasks:
 
-1. Calculate the sum of elements in a 1D array. Primary example.
-2. Multiply two matrices (low-priority).
-3. Softmax function on a 1D array (low-priority).
-
-Refer to the `readme` file in each subdirectory for instructions to run the examples.
+1. Calculate the sum of elements in a 1D array.
+2. Multiply two matrices.
+3. Calculate a Softmax function on a 1D array.
 
 
 ### Benchmarking
 
-Run the Python script `benchmark.py` to build and execute all examples:
+Run the Python script `benchmark.py` to measure the performances of a project:
 
 ```
 # Linux
@@ -43,5 +42,5 @@ py benchmark.py
 ```
 
 
-## Visite guidée de cadres logiciels pour GPU
+## Visite guidée de cadres logiciels pour processeurs graphiques
 

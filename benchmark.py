@@ -11,7 +11,7 @@ import os
 import subprocess
 import matplotlib.pyplot as plt
 
-BACKEND = "cpu-rust"
+BACKEND = "cpu-cpp"
 TASK = "1"
 MIN_N = 10_000
 MAX_N = 10_000_000
@@ -26,8 +26,8 @@ def cpu_cpp():
         pass
     os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/cpp/build")
     subprocess.check_call(["cmake", ".."])
-    subprocess.check_call(["cmake", "--build", "."])
-    os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/cpp/build/Debug")
+    subprocess.check_call(["cmake", "--build", ".", "--config", "Release"])
+    os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/cpp/build/Release")
     files = os.listdir()
     if "cpu.exe" in files:
         program = "cpu.exe"
@@ -97,7 +97,7 @@ def cpu_rust():
     plt.show()
 
 
-if BACKEND == "cpu-cpp":
+if BACKEND == "cpu-cpp" or BACKEND == "cpu":
     cpu_cpp()
 elif BACKEND == "cpu-rust":
     cpu_rust()
