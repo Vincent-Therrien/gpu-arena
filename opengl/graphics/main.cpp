@@ -1,4 +1,4 @@
-#include <glad/glad.h>  // Load OpenGL functions
+#include "glad.h"  // Load OpenGL functions
 #include <GLFW/glfw3.h>  // Window management
 #include <iostream>
 
@@ -7,7 +7,7 @@ const char* vertexShaderSource = R"(
     #version 330 core
     layout (location = 0) in vec3 aPos;
     void main() {
-        gl_Position = vec4(aPos, 1.0);
+        gl_Position = vec4(aPos, 2.0);
     }
 )";
 
@@ -16,7 +16,7 @@ const char* fragmentShaderSource = R"(
     #version 330 core
     out vec4 FragColor;
     void main() {
-        FragColor = vec4(1.0, 0.5, 0.2, 1.0);
+        FragColor = vec4(1.0, 0.9, 0.2, 1.0);
     }
 )";
 
