@@ -11,12 +11,12 @@ A Guided Tour of GPU Programming Frameworks
 Programming GPUs is challenging - learn how to do it here.
 
 This repository comprises self-contained projects that show how to install a GPU programming
-framework, build a GPU-accelerated program, and execute it. Refer to the `readme` file in each
-subdirectory for the instructions.
+framework, build a GPU-accelerated program, and execute it. Refer to the ``readme`` file in each
+subdirectory for detailed instructions.
 
 
-Framework Index
----------------
+Project Index
+-------------
 
 +------------------------------------------+----------------------------+-------------------------------------------+---------------+
 | Framework                                | Applications               | Devices                                   | Operating     |
@@ -25,11 +25,11 @@ Framework Index
 +==========================================+==========+=================+=====+=======+=======+=====+===============+===============+
 |`CPU <cpu/readme.md>`__                   | N        | Y               | Y   | N     | N     | N   | N             | Any           |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`OpenGL <opengl/readme.md>`__             | Y        | Y               | Y   | Y     | Y     | Y   | N             | Any           |
+|`OpenGL <opengl/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any           |
 |                                          |          |                 |     |       |       |     |               | (legacy       |
 |                                          |          |                 |     |       |       |     |               | on Apple)     |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`DirectX <directx/readme.md>`__           | Y        | Y               | Y   | Y     | Y     | Y   | N             | Windows       |
+|`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
 
