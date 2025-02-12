@@ -8,7 +8,7 @@ only on Windows `:(`.
 ## Graphics
 
 The directory `graphics` is a self-contained C++ project that uses Direct3D to open a window and
-display simple graphics.
+display simple graphics. Direct3D uses HLSL (High-Level Shader Language) to write shaders.
 
 The following snippet shows how to build and run it. This only works on Windows!
 

@@ -5,18 +5,27 @@
 // Vertex Shader Source Code
 const char* vertexShaderSource = R"(
     #version 330 core
-    layout (location = 0) in vec3 aPos;
+
+    layout(location = 0) in vec3 inPos;
+    layout(location = 1) in vec4 inColor;
+
+    out vec4 fragColor;
+
     void main() {
-        gl_Position = vec4(aPos, 2.0);
+        gl_Position = vec4(inPos, 1.0);
+        fragColor = inColor;
     }
 )";
 
 // Fragment Shader Source Code
 const char* fragmentShaderSource = R"(
     #version 330 core
-    out vec4 FragColor;
+
+    in vec4 fragColor;
+    out vec4 outColor;
+
     void main() {
-        FragColor = vec4(1.0, 0.9, 0.2, 1.0);
+        outColor = fragColor;
     }
 )";
 
@@ -57,9 +66,10 @@ int main() {
 
     // Vertex Data
     float vertices[] = {
-        -0.5f, -0.5f, 0.0f,  // Bottom Left
-         0.5f, -0.5f, 0.0f,  // Bottom Right
-         0.0f,  0.5f, 0.0f   // Top Center
+       //  Positions        // Colors
+        0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // Top (Red)
+       -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // Left (Green)
+        0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // Right (Blue)
     };
 
     // Create a Vertex Buffer Object (VBO) and Vertex Array Object (VAO)
@@ -74,9 +84,13 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    // Define vertex attributes
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    // Define vertex attributes (location = 0)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    // Color attribute (location = 1)
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     // Create and compile Vertex Shader
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);

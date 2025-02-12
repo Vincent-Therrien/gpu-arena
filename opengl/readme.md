@@ -1,7 +1,7 @@
 # OpenGL
 
 OpenGL is an application programming interface designed for computer graphics, but it also supports
-general-purpose computing through computing shaders.
+general-purpose computing through computing shaders. OpenGL uses GLSL to write shaders.
 
 
 ## Graphics Example
