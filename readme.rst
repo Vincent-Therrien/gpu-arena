@@ -23,7 +23,7 @@ Framework Index
 |                                          +----------+-----------------+           +-----+-------+-------+-----+-------+
 |                                          | Graphics | General-purpose |           | CPU |Nvidia | Intel | AMD | Apple |
 +==========================================+==========+=================+===========+=====+=======+=======+=====+=======+
-|:ref:`CPU<cpu/readme.md>`                 | N        | Y               | Any       | Y   | N     | N     | N   | N     |
+|`CPU<cpu/readme.md>_`                     | N        | Y               | Any       | Y   | N     | N     | N   | N     |
 +------------------------------------------+----------+-----------------+-----------+-----+-------+-------+-----+-------+
 |:ref:`OpenGL<opengl/readme.md>`           | Y        | Y               | Any       | Y   | Y     | Y     | Y   | N     |
 +------------------------------------------+----------+-----------------+-----------+-----+-------+-------+-----+-------+
@@ -44,15 +44,14 @@ Each project in this repository can execute the following tasks:
 Benchmarking
 ------------
 
-Run the Python script `benchmark.py` to measure the performances of a project:
+Run the Python script ``benchmark.py`` to measure the performances of a project:
 
-```
-# Linux
-python3 benchmark.py
+.. code:: bash
+   # Linux
+   python3 benchmark.py
 
-# OS that begins with the letter W
-py benchmark.py
-```
+   # OS that begins with the letter W
+   py benchmark.py
 
 
 Visite guidée de cadres logiciels pour processeurs graphiques
