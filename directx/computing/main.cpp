@@ -36,7 +36,7 @@ int main() {
     ID3D11ComputeShader* computeShader = nullptr;
     HR_CHECK(device->CreateComputeShader(csBlob->GetBufferPointer(), csBlob->GetBufferSize(), nullptr, &computeShader));
     csBlob->Release();
-std::cout << "*" << std::endl;
+
     // Step 4: Create Buffers (Input & Output)
     D3D11_BUFFER_DESC bufferDesc = {};
     bufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -52,7 +52,7 @@ std::cout << "*" << std::endl;
     bufferDesc.ByteWidth = numGroups * sizeof(float);
     ID3D11Buffer* outputBuffer = nullptr;
     HR_CHECK(device->CreateBuffer(&bufferDesc, nullptr, &outputBuffer));
-std::cout << "*" << std::endl;
+
     // Step 5: Create Unordered Access Views (UAV)
     D3D11_UNORDERED_ACCESS_VIEW_DESC uavDesc = {};
     uavDesc.Format = DXGI_FORMAT_UNKNOWN;
@@ -64,13 +64,13 @@ std::cout << "*" << std::endl;
     uavDesc.Buffer.NumElements = numGroups;
     ID3D11UnorderedAccessView* outputUAV = nullptr;
     HR_CHECK(device->CreateUnorderedAccessView(outputBuffer, &uavDesc, &outputUAV));
-std::cout << "*" << std::endl;
+
     // Step 6: Run the Compute Shader
     context->CSSetShader(computeShader, nullptr, 0);
     context->CSSetUnorderedAccessViews(0, 1, &inputUAV, nullptr);
     context->CSSetUnorderedAccessViews(1, 1, &outputUAV, nullptr);
     context->Dispatch(numGroups, 1, 1);
-std::cout << "*" << std::endl;
+
     // Step 7: Read Back Result
     std::vector<float> partialSums(numGroups);
     D3D11_BUFFER_DESC readbackDesc = {};
@@ -86,7 +86,7 @@ std::cout << "*" << std::endl;
     HR_CHECK(context->Map(readbackBuffer, 0, D3D11_MAP_READ, 0, &mappedResource));
     memcpy(partialSums.data(), mappedResource.pData, numGroups * sizeof(float));
     context->Unmap(readbackBuffer, 0);
-std::cout << "*" << std::endl;
+
     // Step 8: Compute Final Sum on CPU
     float finalSum = 0.0f;
     for (float val : partialSums) {
