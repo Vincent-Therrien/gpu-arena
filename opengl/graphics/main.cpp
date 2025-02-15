@@ -1,6 +1,7 @@
 #include "glad.h"  // Load OpenGL functions
 #include <GLFW/glfw3.h>  // Window management
 #include <iostream>
+#include <chrono>
 
 // Vertex Shader Source Code
 const char* vertexShaderSource = R"(
@@ -11,8 +12,15 @@ const char* vertexShaderSource = R"(
 
     out vec4 fragColor;
 
+    uniform float angle; // Rotation angle in radians
+
     void main() {
-        gl_Position = vec4(inPos, 1.0);
+        mat2 rotation = mat2(
+            cos(angle), -sin(angle),
+            sin(angle),  cos(angle)
+        );
+        vec2 rotatedPos = rotation * inPos.xy;
+        gl_Position = vec4(rotatedPos, inPos.z, 1.0);
         fragColor = inColor;
     }
 )";
@@ -25,7 +33,9 @@ const char* fragmentShaderSource = R"(
     out vec4 outColor;
 
     void main() {
-        outColor = fragColor;
+        float levels = 10.0; // Number of discrete color levels
+        vec3 quantizedColor = floor(fragColor.rgb * levels) / (levels - 1.0);
+        outColor = vec4(quantizedColor, 1.0);
     }
 )";
 
@@ -113,15 +123,28 @@ int main() {
     glDeleteShader(fragmentShader);
 
     // Render Loop
+    float rotationAngle = 0.0f;
+
+    auto now = std::chrono::steady_clock::now();
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);  // Clear screen
 
+        int angleLocation = glGetUniformLocation(shaderProgram, "angle");
+        glUniform1f(angleLocation, rotationAngle);
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);  // Draw triangle
 
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+        auto end = std::chrono::steady_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - now).count() / 1000.0;
+        rotationAngle += duration * 0.1;
+        vertices[4] += duration * 0.1;
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+        now = end;
     }
 
     // Cleanup
