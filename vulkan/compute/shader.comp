@@ -1,0 +1,31 @@
+#version 450
+
+#extension GL_EXT_shader_atomic_float : require
+
+layout(local_size_x = 256) in;
+
+layout(set = 0, binding = 0) buffer InputBuffer {
+    float data[];
+};
+
+layout(set = 0, binding = 1) buffer OutputBuffer {
+    float result;
+};
+
+shared float localSum;
+
+void main() {
+    uint index = gl_GlobalInvocationID.x;
+    uint localIndex = gl_LocalInvocationID.x;
+
+    if (localIndex == 0) localSum = 0.0;
+    memoryBarrierShared();
+    barrier();
+
+    atomicAdd(localSum, data[index]);
+    barrier();
+
+    if (localIndex == 0) {
+        atomicAdd(result, localSum);
+    }
+}

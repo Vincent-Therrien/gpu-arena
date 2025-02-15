@@ -1,11 +1,14 @@
 # Vulkan
 
 Vulkan is an application programming interface designed for computer graphics, but it also supports
-general-purpose computing through computing shaders.
+general-purpose computing through computing shaders. Vulkan uses SPIR-V as its shading language,
+which is not intended to be human-readable. You can write the shaders in a human readable language,
+like GLSL and HLSL, and compile it to SPIR-V before feeding it to Vulkan. This project uses GLSL
+and the compiler `glslangValidator`.
 
-Vulkan uses SPIR-V as its shading language, which is not intended to be human-readable. You can
-write the shaders in a human readable language, like GLSL and HLSL, and compile it to SPIR-V before
-feeding it to Vulkan. This project uses GLSL.
+Note: The Website https://vulkan-tutorial.com/ is a **much** better resource to learn Vulkan! This
+current repository aims at providing simple comparisons between GPU programming APIs, so it only
+provides simple examples.
 
 
 ## Graphics Example
@@ -24,7 +27,6 @@ cd graphics
 sudo apt install vulkan-tools
 sudo apt install libvulkan-dev
 sudo apt install vulkan-validationlayers-dev spirv-tools
-sudo apt install glslang-tools
 sudo apt install libglm-dev
 mkdir build
 cd build
@@ -47,11 +49,14 @@ necessary!
 Run the following commands:
 
 ```
-cd computing
-
+cd compute
+sudo apt install vulkan-tools
+sudo apt install libvulkan-dev
+sudo apt install vulkan-validationlayers-dev spirv-tools
 mkdir build
 cd build
 cmake ..
 cmake --build .
-./computing
+glslangValidator -V ../shader.comp -o shader.spv
+./compute
 ```
