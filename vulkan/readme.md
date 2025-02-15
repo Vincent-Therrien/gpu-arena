@@ -11,7 +11,10 @@ feeding it to Vulkan. This project uses GLSL.
 ## Graphics Example
 
 The directory `graphics` is a self-contained C++ project that uses OpenGL and additional libraries
-to open a window and display simple graphics.
+to open a window and display simple graphics. This project is taken from the file
+https://github.com/Overv/VulkanTutorial/blob/main/code/15_hello_triangle.cpp from the repository
+`VulkanTutorial`, available at https://github.com/Overv/VulkanTutorial/tree/main and licensed under
+the licenses CC0-1.0 and CC-BY-SA-4.0.
 
 The following instructions show how to build and run it. This only works on Linux! Use WSL if
 necessary!
