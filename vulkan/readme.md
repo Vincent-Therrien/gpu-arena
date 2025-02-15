@@ -21,10 +21,14 @@ cd graphics
 sudo apt install vulkan-tools
 sudo apt install libvulkan-dev
 sudo apt install vulkan-validationlayers-dev spirv-tools
+sudo apt install glslang-tools
+sudo apt install libglm-dev
 mkdir build
 cd build
 cmake ..
 cmake --build .
+glslangValidator -V ../shader.vert -o vertices.spv
+glslangValidator -V ../shader.frag -o fragment.spv
 ./graphics
 ```
 
