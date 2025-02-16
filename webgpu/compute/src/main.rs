@@ -154,7 +154,7 @@ async fn run() {
 
     let data = buf_slice.get_mapped_range();
     let result: &[f32] = bytemuck::cast_slice(&data);
-    println!("Compute Shader Output: {:?}", result);
+    println!("Sum of the elements in the array: {:?}", result[0]);
 
     drop(data);
     staging_buffer.unmap();
