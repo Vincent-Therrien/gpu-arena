@@ -4,7 +4,7 @@ struct VertexPayload {
 };
 
 @vertex
-fn vs_main(@builtin(vertex_index) i: u32) -> VertexPayload {
+fn vertices(@builtin(vertex_index) i: u32) -> VertexPayload {
 
     var positions = array<vec2<f32>, 3>(
         vec2<f32>(-0.75, -0.75),
@@ -25,6 +25,8 @@ fn vs_main(@builtin(vertex_index) i: u32) -> VertexPayload {
 }
 
 @fragment
-fn fs_main(in: VertexPayload) -> @location(0) vec4<f32> {
-    return vec4<f32>(in.color, 1.0);
+fn fragment(in: VertexPayload) -> @location(0) vec4<f32> {
+    let levels: f32 = 10.0;
+    let quantizedColor: vec3<f32> = floor(in.color * levels) / (levels - 1.0);
+    return vec4<f32>(quantizedColor, 1.0);
 }

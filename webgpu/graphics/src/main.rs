@@ -1,5 +1,6 @@
-use glfw::{fail_on_errors, Action, Key, Window, WindowHint, ClientApiHint};
+// Based on https://github.com/sotrh/learn-wgpu (MIT license).
 
+use glfw::{fail_on_errors, Action, Key, Window, WindowHint, ClientApiHint};
 use std::env::current_dir;
 use std::fs;
 
@@ -14,9 +15,9 @@ impl PipelineBuilder {
 
     pub fn new() -> Self {
         PipelineBuilder {
-            shader_filename: "dummy".to_string(),
-            vertex_entry: "dummy".to_string(),
-            fragment_entry: "dummy".to_string(),
+            shader_filename: String::new(),
+            vertex_entry: String::new(),
+            fragment_entry: String::new(),
             pixel_format: wgpu::TextureFormat::Rgba8Unorm,
         }
     }
@@ -39,7 +40,7 @@ impl PipelineBuilder {
         filepath.push("src/");
         filepath.push(self.shader_filename.as_str());
         let filepath = filepath.into_os_string().into_string().unwrap();
-        let source_code = fs::read_to_string(filepath).expect("Can't read source code!");
+        let source_code = fs::read_to_string(filepath).expect("Failed to read the source code.");
 
         let shader_module_descriptor = wgpu::ShaderModuleDescriptor {
             label: Some("Shader Module"),
@@ -165,7 +166,7 @@ impl<'a> State<'a> {
         surface.configure(&device, &config);
 
         let mut pipeline_builder = PipelineBuilder::new();
-        pipeline_builder.set_shader_module("shader.wgsl", "vs_main", "fs_main");
+        pipeline_builder.set_shader_module("shader.wgsl", "vertices", "fragment");
         pipeline_builder.set_pixel_format(config.format);
         let render_pipeline = pipeline_builder.build_pipeline(&device);
 
@@ -210,9 +211,9 @@ impl<'a> State<'a> {
             resolve_target: None,
             ops: wgpu::Operations {
                 load: wgpu::LoadOp::Clear(wgpu::Color {
-                    r: 0.75,
-                    g: 0.5,
-                    b: 0.25,
+                    r: 0.0,
+                    g: 0.0,
+                    b: 0.0,
                     a: 1.0
                 }),
                 store: wgpu::StoreOp::Store,
@@ -247,7 +248,7 @@ async fn run() {
     glfw.window_hint(WindowHint::ClientApi(ClientApiHint::NoApi));
     let (mut window, events) =
         glfw.create_window(
-            800, 600, "It's WGPU time.",
+            800, 600, "WGPU Graphics",
             glfw::WindowMode::Windowed).unwrap();
 
     let mut state = State::new(&mut window).await;
@@ -262,18 +263,15 @@ async fn run() {
         for (_, event) in glfw::flush_messages(&events) {
             match event {
 
-                //Hit escape
                 glfw::WindowEvent::Key(Key::Escape, _, Action::Press, _) => {
                     state.window.set_should_close(true)
                 }
 
-                //Window was moved
                 glfw::WindowEvent::Pos(..) => {
                     state.update_surface();
                     state.resize(state.size);
                 }
 
-                //Window was resized
                 glfw::WindowEvent::FramebufferSize(width, height) => {
                     state.update_surface();
                     state.resize((width, height));
