@@ -10,5 +10,16 @@ The directory `graphics` is a self-contained Rust program that uses the `wgpu` l
 simple graphics. It is based on the project https://github.com/sotrh/learn-wgpu, licensed under the
 MIT license.
 
+To run the example, execute the following instructions:
+
+```
+cd graphics
+cargo run
+```
+
 
 ## Compute Example
+
+The directory `compute` is a self-contained Rust program that uses the `wgpu` library to run
+compute shaders. It is based on the project https://github.com/googlefonts/compute-shader-101,
+licensed under the MIT license.
