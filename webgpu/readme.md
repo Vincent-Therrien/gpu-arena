@@ -22,4 +22,12 @@ cargo run
 
 The directory `compute` is a self-contained Rust program that uses the `wgpu` library to run
 compute shaders. It is based on the project https://github.com/googlefonts/compute-shader-101,
-licensed under the MIT license.
+licensed under the MIT license. This current project **sums the elements in an array** with a
+compute shader.
+
+To run the example, execute the following instructions:
+
+```
+cd compute
+cargo run
+```

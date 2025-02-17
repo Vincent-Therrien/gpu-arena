@@ -8,11 +8,12 @@ gpu-arena
 A Guided Tour of GPU Programming Frameworks
 +++++++++++++++++++++++++++++++++++++++++++
 
-Programming GPUs is challenging - learn how to do it here.
+Self-contained projects that show how to install a GPU programming framework, build
+GPU-accelerated programs, and execute them. Refer to the ``readme`` file in each subdirectory for
+more information.
 
-This repository comprises self-contained projects that show how to install a GPU programming
-framework, build a GPU-accelerated program, and execute it. Refer to the ``readme`` file in each
-subdirectory for detailed instructions.
+**Note**: The projects are minimalist examples, not complete tutorials. The ``readme`` files in each
+subdirectory provide references to more detailed resources.
 
 
 Project Index
@@ -24,12 +25,13 @@ Project Index
 |                                          | Graphics | General-purpose | CPU |Nvidia | Intel | AMD | Apple Silicon |               |
 +==========================================+==========+=================+=====+=======+=======+=====+===============+===============+
 |`OpenGL <opengl/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any           |
-|                                          |          |                 |     |       |       |     |               | (legacy       |
+|                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Vulkan <vulkan/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any (partial  |
+|`Vulkan <vulkan/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any           |
+|                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`Metal <metal/readme.md>`__               | Y        | Y               | N   | N     | N     | N   | Y             | Mac           |
@@ -38,11 +40,12 @@ Project Index
 |`WebGPU <webgpu/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | Y             | Any           |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N   | N             | Any           |
-|                                          |          |                 |     |       |       |     |               |               |
+|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N   | N             | Windows,      |
+|                                          |          |                 |     |       |       |     |               | Linux         |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`OpenCL <opencl/readme.md>`__             | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           |
-|                                          |          |                 |     |       |       |     |               |               |
+|                                          |          |                 |     |       |       |     |               | (deprecated   |
+|                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`SYCL <sycl/readme.md>`__                 | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           |
 |                                          |          |                 |     |       |       |     |               |               |
@@ -57,20 +60,10 @@ Project Index
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
 
-Computing Tasks
----------------
-
-Each project in this repository can execute the following tasks:
-
-1. Calculate the sum of elements in a 1D array.
-2. Multiply two matrices.
-3. Calculate a Softmax function on a 1D array.
-
-
 Benchmarking
 ------------
 
-Run the Python script ``benchmark.py`` to measure the performances of a project:
+Run the Python script ``benchmark.py`` to compare the performances of a project:
 
 .. code:: bash
    # Linux
