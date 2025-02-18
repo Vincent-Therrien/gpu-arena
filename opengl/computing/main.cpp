@@ -5,24 +5,38 @@
 
 // Compute shader source (performs parallel reduction sum)
 const char* computeShaderSource = R"(
-#version 430 core
-layout(local_size_x = 256) in;  // Workgroup size
+#version 310 es
 
-layout(std430, binding = 0) buffer Data {
-    float data[];
+layout(std430, binding = 0) buffer InputBuffer {
+    float inputData[];
 };
+
+layout(std430, binding = 1) buffer OutputBuffer {
+    float outputData[];
+};
+
+shared float data[256];
+
+layout(local_size_x = 256) in;
 
 void main() {
     uint index = gl_GlobalInvocationID.x;
     uint stride = gl_NumWorkGroups.x * gl_WorkGroupSize.x;
 
-    // Parallel reduction: sum every element in stride
-    for (uint s = stride / 2; s > 0; s >>= 1) {
+    data[index] = inputData[index];
+    barrier();
+
+    for (uint s = 128u; s != 0u; s >>= 1) {
         if (index < s) {
+            //data[index] = float(s);
             data[index] += data[index + s];
         }
-        barrier();  // Synchronize threads
+        barrier();
     }
+
+    //if (index == 0u) {
+        outputData[index] = data[index];
+    //}
 }
 )";
 
@@ -65,30 +79,48 @@ int main() {
     }
 
     // Input data
-    std::vector<float> input = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0};
-    size_t dataSize = input.size() * sizeof(float);
+    std::vector<float> inputData;
+    for (unsigned int i = 0; i < 256; i++) {
+        inputData.push_back(1);
+    }
+    size_t dataSize = inputData.size() * sizeof(float);
 
-    // Create SSBO
-    GLuint ssbo;
-    glGenBuffers(1, &ssbo);
-    glBindBuffer(GL_SHADER_STORAGE_BUFFER, ssbo);
-    glBufferData(GL_SHADER_STORAGE_BUFFER, dataSize, input.data(), GL_DYNAMIC_COPY);
-    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, ssbo);
+    GLuint inputBuffer, outputBuffer;
+    glGenBuffers(1, &inputBuffer);
+    glGenBuffers(1, &outputBuffer);
+
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, inputBuffer);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, 256 * sizeof(float), inputData.data(), GL_DYNAMIC_COPY);
+
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, 256 * sizeof(float), nullptr, GL_DYNAMIC_COPY);
 
     // Create and run compute shader
     GLuint computeProgram = createComputeShader(computeShaderSource);
     glUseProgram(computeProgram);
-    glDispatchCompute(input.size() / 256 + 1, 1, 1); // Dispatch workgroups
+
+    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, inputBuffer);
+    glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, outputBuffer);
+
+    glDispatchCompute(inputData.size(), 1, 1); // Dispatch workgroups
     glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT); // Ensure memory sync
 
     // Retrieve result
-    float* result = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
-    std::cout << "Sum: " << result[0] << std::endl;
-    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
+    float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+    std::vector<float> outputData(256, 0.0f);
+    if (mappedData) {
+        std::copy(mappedData, mappedData + 256, outputData.begin());
+        glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+    }
+    for (unsigned int i = 0; i < 256; i++) {
+        std::cout << outputData[i] << ", ";
+    }
 
     // Cleanup
     glDeleteProgram(computeProgram);
-    glDeleteBuffers(1, &ssbo);
+    glDeleteBuffers(1, &inputBuffer);
+    glDeleteBuffers(1, &outputBuffer);
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;

@@ -1,0 +1,12 @@
+[project]
+name = "triton-py"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.2.3",
+    "setuptools>=75.8.0",
+    "torch>=2.6.0",
+    "triton>=3.2.0",
+]
