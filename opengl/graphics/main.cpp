@@ -12,15 +12,15 @@ const char* vertexShaderSource = R"(
 
     out vec4 fragColor;
 
-    uniform float angle; // Rotation angle in radians
+    uniform float angle;
 
     void main() {
         mat2 rotation = mat2(
             cos(angle), -sin(angle),
             sin(angle),  cos(angle)
         );
-        vec2 rotatedPos = rotation * inPos.xy;
-        gl_Position = vec4(rotatedPos, inPos.z, 1.0);
+        vec2 rotatedPos = rotation * inPos.xz;
+        gl_Position = vec4(rotatedPos.x, inPos.y, rotatedPos.y, 1.0);
         fragColor = inColor;
     }
 )";
@@ -33,7 +33,7 @@ const char* fragmentShaderSource = R"(
     out vec4 outColor;
 
     void main() {
-        float levels = 10.0; // Number of discrete color levels
+        float levels = 10.0;
         vec3 quantizedColor = floor(fragColor.rgb * levels) / (levels - 1.0);
         outColor = vec4(quantizedColor, 1.0);
     }
@@ -140,8 +140,7 @@ int main() {
 
         auto end = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - now).count() / 1000.0;
-        rotationAngle += duration * 0.1;
-        vertices[4] += duration * 0.1;
+        rotationAngle += duration * 0.2;
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
         now = end;

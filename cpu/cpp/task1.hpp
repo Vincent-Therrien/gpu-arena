@@ -30,17 +30,23 @@ void parallel_sum(std::vector<float> &a, int n_threads)
 {
     std::vector<std::thread> threads;
     std::vector<float> results;
-    results.resize(n_threads * CACHE_LINE_SIZE);
 
-    for (int t = 0; t < n_threads; t++) {
-        int n_elements = (a.size() + n_threads - 1) / n_threads;
-        threads.emplace_back(partial_sum, std::ref(a), t, n_elements, std::ref(results));
+    if (n_threads == 1) {
+        results.resize(1);
+        partial_sum(std::ref(a), 0, a.size(), std::ref(results));
     }
+    else {
+        results.resize(n_threads * CACHE_LINE_SIZE);
+        for (int t = 0; t < n_threads; t++) {
+            int n_elements = (a.size() + n_threads - 1) / n_threads;
+            threads.emplace_back(partial_sum, std::ref(a), t, n_elements, std::ref(results));
+        }
 
-    float result = 0.0;
-    for (int t = 0; t < n_threads; t++) {
-        threads[t].join();
-        result += results[t * CACHE_LINE_SIZE];
+        float result = 0.0;
+        for (int t = 0; t < n_threads; t++) {
+            threads[t].join();
+            result += results[t * CACHE_LINE_SIZE];
+        }
     }
 }
 

@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 BACKEND = "cpu-cpp"
 TASK = "1"
-MIN_N = 10_000
-MAX_N = 10_000_000
+MIN_N = 1000
+MAX_N = 1000_0000
 ITERATIONS = 5
 
 
