@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <chrono>
 
-#define ARRAY_SIZE 1024
+#define ARRAY_SIZE 10240000
 
 // Compute shader source (performs parallel reduction sum)
 const char* computeShaderSource = R"(
@@ -20,26 +20,27 @@ layout(std430, binding = 1) buffer OutputBuffer {
     float outputData[];
 };
 
-shared float data[ARRAY_SIZE];
+shared float groupData[ARRAY_SIZE];
 
 layout(local_size_x = ARRAY_SIZE) in;
 
 void main() {
     uint index = gl_GlobalInvocationID.x;
-    uint stride = gl_NumWorkGroups.x * gl_WorkGroupSize.x;
+    uint local_index = gl_LocalInvocationID.x;
+    uint groupID = gl_WorkGroupID.x;
 
-    data[index] = inputData[index];
+    groupData[local_index] = inputData[index];
     barrier();
 
     for (uint s = HALF_ARRAY_SIZE; s != 0u; s >>= 1) {
-        if (index < s) {
-            data[index] += data[index + s];
+        if (local_index < s) {
+            groupData[local_index] += groupData[local_index + s];
         }
         barrier();
     }
 
-    if (index == 0u) {
-        outputData[index] = data[index];
+    if (local_index == 0u) {
+        outputData[groupID] = groupData[0];
     }
 }
 )";
@@ -66,7 +67,21 @@ GLuint createComputeShader(const char* source) {
     return program;
 }
 
-int main() {
+void peek_buffer()
+{
+    float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+    std::vector<float> outputData(16, 0.0f);
+    if (mappedData) {
+        std::copy(mappedData, mappedData + 16, outputData.begin());
+        glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+    }
+    for (unsigned int i = 0; i < 16; i++) {
+        std::cout << i << "    " << outputData[i] << std::endl;
+    }
+}
+
+int main()
+{
     // Initialize GLFW (no window needed)
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
@@ -94,10 +109,10 @@ int main() {
     glGenBuffers(1, &outputBuffer);
 
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, inputBuffer);
-    glBufferData(GL_SHADER_STORAGE_BUFFER, ARRAY_SIZE * sizeof(float), inputData.data(), GL_DYNAMIC_COPY);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, dataSize, inputData.data(), GL_DYNAMIC_COPY);
 
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
-    glBufferData(GL_SHADER_STORAGE_BUFFER, 1 * sizeof(float), nullptr, GL_DYNAMIC_COPY);
+    glBufferData(GL_SHADER_STORAGE_BUFFER, dataSize / 1024, nullptr, GL_DYNAMIC_COPY);
 
     // Create and run compute shader
     GLuint computeProgram = createComputeShader(computeShaderSource);
@@ -107,22 +122,26 @@ int main() {
     glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 0, inputBuffer);
     glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, outputBuffer);
 
-    glDispatchCompute(inputData.size(), 1, 1); // Dispatch workgroups
-    glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT); // Ensure memory sync
+    int numWorkgroups = ARRAY_SIZE / 1024;
+    numWorkgroups = numWorkgroups ? numWorkgroups : 1;
+
+    glUseProgram(computeProgram);
+    glDispatchCompute(numWorkgroups, 1, 1);
+    glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 
     // Retrieve result
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
-    float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
-    std::vector<float> outputData(1, 0.0f);
-    if (mappedData) {
-        std::copy(mappedData, mappedData + 1, outputData.begin());
-        glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
-    }
-
     auto end = std::chrono::steady_clock::now();
+    float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+    float total = 0;
+    for (unsigned int i = 0; i < numWorkgroups; i++) {
+        total += mappedData[i];
+    }
+    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+
     double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
-    std::cout << "Result: " << outputData[0] << std::endl;
+    std::cout << "Result: " << total << std::endl;
     std::cout << "Duration (s): " << duration << std::endl;
 
     // Cleanup

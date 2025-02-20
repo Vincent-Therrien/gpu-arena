@@ -30,11 +30,11 @@ Project Index
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Vulkan <vulkan/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any           |
+|`Vulkan <vulkan/readme.md>`__             | Y        | Y*              | N   | Y     | Y     | Y   | N             | Any           |
 |                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Metal <metal/readme.md>`__               | Y        | Y               | N   | N     | N     | N   | Y             | Mac           |
+|`Metal <metal/readme.md>`__               | Y*       | Y*              | N   | N     | N     | N   | Y             | Mac           |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`WebGPU <webgpu/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | Y             | Any           |
@@ -47,23 +47,42 @@ Project Index
 |                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`SYCL <sycl/readme.md>`__                 | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           |
-|                                          |          |                 |     |       |       |     |               |               |
+|`SYCL <sycl/readme.md>`__                 | N        | Y*              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only |
+|                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         |
-|                                          |          |                 |     |       |       |     |               |               |
-+------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Bend <bend/readme.md>`__                 | N        | Y               | N   | Y     | N     | N   | N             | Linux, Mac    |
+|`Triton <triton/readme.md>`__             | N        | Y*              | N   | Y     | N     | Y   | N             | Linux         |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`CPU <cpu/readme.md>`__                   | N        | Y               | Y   | N     | N     | N   | N             | Any           |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
+The sign ``*`` indicates that the corresponding example is not implemented in the project or is not
+functional.
+
+
+Performance Comparison
+----------------------
+
+The following table compares the performances of some backends to calculate the sum of elements in
+an array through sum reduction. Keep in mind that results vary depending on the system and are
+influenced by memory transfer overheads. This table is provided only as an indication.
+
++---------------------+-------------------------------------------+
+| Framework           | Sum Reduction Time (s) for Array Sizes    |
+|                     +----------+----------+----------+----------+
+|                     | 256      | 1024     | 1e6      | 1e7      |
++=====================+==========+==========+==========+==========+
+| C++ (1 CPU thread)  | 1e-06    | 1e-06    | 0.000191 | 0.001341 |
++---------------------+----------+----------+----------+----------+
+| OpenGL              | 0.000605 | 0.000563 | 0.000582 | 0.000567 |
++---------------------+----------+----------+----------+----------+
+
 
 Benchmarking
 ------------
 
-Run the Python script ``benchmark.py`` to compare the performances of a project:
+Run the Python script ``benchmark.py`` to compare how performances vary depending on the number of
+threads running on CPU:
 
 .. code:: bash
    # Linux
