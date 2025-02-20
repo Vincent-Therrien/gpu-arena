@@ -4,6 +4,13 @@ gpu-arena
 - `English (en) <#a-guided-tour-of-gpu-frameworks>`_
 - `Français (fr) <#visite-guidée-de-cadres-logiciels-pour-processeurs-graphiques>`_
 
+.. image:: assets/triangle.gif
+   :width: 500
+   :align: center
+   :alt: Demonstration of simple 3D graphics. A colored triangle rotates on its vertical axis in
+      front of a black background. The corners of the triangle are red, blue, and green, and the
+      center of the triangle are colored in shades of these colors.
+
 
 A Guided Tour of GPU Programming Frameworks
 +++++++++++++++++++++++++++++++++++++++++++
