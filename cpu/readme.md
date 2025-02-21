@@ -1,12 +1,20 @@
 # CPU
 
-Run the tasks on multi-core CPUs.
+Algorithm acceleration with multi-threading on CPUs.
+
+Most projects in this repository demonstrate how to use GPUs (graphics processing units), which
+excel at processing **large** amounts of ideally **weakly dependent** data. GPUs are inadequate for
+many situations, in which case you can fall back on CPUs (central processing units). This repository
+contains programs written in C++ and Rust to show how to use threads to accelerate algorithms.
 
 
 ## C++ Version
 
+This project uses the class `std::thread` to implement multithreading. It's also possible to use
+the function `pthread_create` to launch threads.
 
-### Build
+
+### Build the Project
 
 - Install [cmake](https://cmake.org/) on your system.
 - Install [clang](`https://clang.llvm.org/`) on your system (yes, even if you are on W*ndows! No
@@ -14,7 +22,12 @@ Run the tasks on multi-core CPUs.
 - Navigate in the `cpp` directory.
 - Create a `build` subdirectory.
 - Navigate in the `build` subdirectory.
-- Run the command `cmake --build .`.
+- Run the command `cmake ..`.
+- Run the command `cmake --build . --config Release`.
+
+**Note**: The option `--config Release` is important because it instructs cmake to add optimization
+flags. Without them, the compiler will not optimize aggressively enough and you might notice that
+multithreading *decreases* performances instead of improving them.
 
 
 ### Usage
@@ -41,6 +54,9 @@ where:
 
 
 ## Rust Version
+
+This project uses the standard modules `std::thread` and `std::sync::Arc` to implement
+multithreading.
 
 
 ### Build

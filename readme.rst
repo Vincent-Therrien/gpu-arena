@@ -15,7 +15,7 @@ gpu-arena
 A Guided Tour of GPU Programming Frameworks
 +++++++++++++++++++++++++++++++++++++++++++
 
-Self-contained projects that show how to install a GPU programming framework, build
+Self-contained projects that show how to install GPU programming frameworks, build
 GPU-accelerated programs, and execute them. Refer to the ``readme`` file in each subdirectory for
 more information.
 

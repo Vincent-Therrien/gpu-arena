@@ -3,7 +3,7 @@
 SYCL lets you write hardware-accelerated instructions into regular C++ code instead of manually
 delegating these computations to kernels. Intel is the only major player supporting it.
 
-I could not make the example work, oneAPI seems full of bugs.
+I could not make the example work! oneAPI does not seem exceptionally convenient.
 
 
 ## Install

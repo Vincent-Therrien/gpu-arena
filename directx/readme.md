@@ -4,6 +4,8 @@ DirectX is a collection of APIs developed by Microsoft to handle graphics, sound
 multimedia tasks. This project uses Direct3D for graphics and DirectCompute for GPGPU. It works
 only on Windows `:(`.
 
+DirectX uses the HLSL shading language.
+
 
 ## Graphics
 
@@ -35,5 +37,7 @@ mkdir build
 cd build
 cmake ..
 cmake --build . --config Release
+copy ..\sum.hlsl Release\sum.hlsl
+cd Release
 Release\computing.exe
 ```

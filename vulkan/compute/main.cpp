@@ -103,7 +103,6 @@ void readResult() {
 }
 
 int main() {
-    // Initialize Vulkan, create buffers, create pipeline, etc.
     createComputePipeline();
     runComputeShader();
     readResult();

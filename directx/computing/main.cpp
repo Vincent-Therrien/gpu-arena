@@ -28,7 +28,7 @@ int main() {
     ID3DBlob* errorBlob = nullptr;
     HRESULT hr = D3DCompileFromFile(L"sum.hlsl", nullptr, nullptr, "main", "cs_5_0", 0, 0, &csBlob, &errorBlob);
     if (FAILED(hr)) {
-        if (errorBlob) std::cerr << (char*)errorBlob->GetBufferPointer();
+        if (errorBlob) std::cout << "Error compiling the shader: " << (char*)errorBlob->GetBufferPointer();
         return -1;
     }
 
