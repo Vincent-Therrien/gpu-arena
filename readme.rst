@@ -92,6 +92,7 @@ Run the Python script ``benchmark.py`` to compare how performances vary dependin
 threads running on CPU:
 
 .. code:: bash
+
    # Linux
    python3 benchmark.py
 
