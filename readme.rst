@@ -16,7 +16,7 @@ A Guided Tour of GPU Programming Frameworks
 +++++++++++++++++++++++++++++++++++++++++++
 
 Self-contained projects that show how to install GPU programming frameworks, build
-GPU-accelerated programs, and execute them. Click on the links in the Index table below to access
+GPU-accelerated programs, and execute them. Click on the links in the index table below to access
 the ``readme`` file of each project for more information.
 
 **Note**: The projects are minimal examples, not complete tutorials. The ``readme`` files in each
@@ -102,3 +102,56 @@ threads running on CPU:
 
 Visite guidée de cadres logiciels pour processeurs graphiques
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Ce dépôt contient des projets sans dépendances qui montrent comment installer un cadre logiciel de
+programmation de GPU, comment construire des programmes accélérés par GPU, et comment les exécuter.
+Cliquez sur les liens dans le tableau ci-dessous pour accéder à des informations supplémentaires
+sur chaque projet.
+
+**Note**: Ces projets sont des exemples minimalistes et non des tutoriels complets. Les fichiers
+``readme`` dans chaque sous-répertoire fournissent des ressources plus détaillées.
+
+
+Indice des projets
+------------------
+
++------------------------------------------+----------------------------+-------------------------------------------+---------------+
+| Cadre logiciel                           | Applications               | Appareils                                 | Systèmes      |
+|                                          +----------+-----------------+-----+-------+-------+-----+---------------+ d'exploitation|
+|                                          |Graphique | Calculs généraux| CPU |Nvidia | Intel | AMD | Apple Silicon |               |
++==========================================+==========+=================+=====+=======+=======+=====+===============+===============+
+|`OpenGL <opengl/readme.md>`__             | O        | O               | N   | O     | O     | O   | N             | Tous          |
+|                                          |          |                 |     |       |       |     |               | (réprouvé     |
+|                                          |          |                 |     |       |       |     |               | sur Mac)      |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`DirectX <directx/readme.md>`__           | O        | O               | N   | O     | O     | O   | N             | Windows       |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`Vulkan <vulkan/readme.md>`__             | O        | O (avec         | N   | O     | O     | O   | N             | Tous          |
+|                                          |          | kompute)        |     |       |       |     |               | (réprouvé     |
+|                                          |          |                 |     |       |       |     |               | sur Mac)      |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`Metal <metal/readme.md>`__               | O*       | O*              | N   | N     | N     | N   | O             | Mac / iOS     |
+|                                          |          |                 |     |       |       |     |               |               |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`WebGPU <webgpu/readme.md>`__             | O        | O               | N   | O     | O     | O   | O             | Tous          |
+|                                          |          |                 |     |       |       |     |               |               |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`CUDA <cuda/readme.md>`__                 | N        | O               | N   | O     | N     | N   | N             | Windows,      |
+|                                          |          |                 |     |       |       |     |               | Linux         |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`OpenCL <opencl/readme.md>`__             | N        | O               | O   | O     | O     | O   | O             | Tous          |
+|                                          |          |                 |     |       |       |     |               | (réprouvé     |
+|                                          |          |                 |     |       |       |     |               | sur Mac)      |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`SYCL <sycl/readme.md>`__                 | N        | O$              | O   | O     | O     | O   | O             | Tous (CPU     |
+|                                          |          |                 |     |       |       |     |               | seulement sur |
+|                                          |          |                 |     |       |       |     |               | Mac)          |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`Triton <triton/readme.md>`__             | N        | O               | N   | O     | N     | O   | N             | Linux         |
+|                                          |          |                 |     |       |       |     |               |               |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+|`CPU <cpu/readme.md>`__                   | N        | O               | O   | N     | N     | N   | N             | Tous          |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
+
+- Le signe ``*`` indique que l'exemple correspondant n'est pas inclus dans le projet.
+- Le signe ``$`` indique que je n'ai pas réussi à le faire fonctionner!
