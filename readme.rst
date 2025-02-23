@@ -16,10 +16,10 @@ A Guided Tour of GPU Programming Frameworks
 +++++++++++++++++++++++++++++++++++++++++++
 
 Self-contained projects that show how to install GPU programming frameworks, build
-GPU-accelerated programs, and execute them. Refer to the ``readme`` file in each subdirectory for
-more information.
+GPU-accelerated programs, and execute them. Click on the links in the Index table below to access
+the ``readme`` file of each project for more information.
 
-**Note**: The projects are minimalist examples, not complete tutorials. The ``readme`` files in each
+**Note**: The projects are minimal examples, not complete tutorials. The ``readme`` files in each
 subdirectory provide references to more detailed resources.
 
 
@@ -37,11 +37,11 @@ Project Index
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Vulkan <vulkan/readme.md>`__             | Y        | Y*              | N   | Y     | Y     | Y   | N             | Any           |
-|                                          |          |                 |     |       |       |     |               | (deprecated   |
+|`Vulkan <vulkan/readme.md>`__             | Y        | Y (through      | N   | Y     | Y     | Y   | N             | Any           |
+|                                          |          | kompute)        |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Metal <metal/readme.md>`__               | Y*       | Y*              | N   | N     | N     | N   | Y             | Mac           |
+|`Metal <metal/readme.md>`__               | Y*       | Y*              | N   | N     | N     | N   | Y             | Mac / iOS     |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`WebGPU <webgpu/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | Y             | Any           |
@@ -54,17 +54,17 @@ Project Index
 |                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`SYCL <sycl/readme.md>`__                 | N        | Y*              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only |
+|`SYCL <sycl/readme.md>`__                 | N        | Y$              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`Triton <triton/readme.md>`__             | N        | Y*              | N   | Y     | N     | Y   | N             | Linux         |
+|`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`CPU <cpu/readme.md>`__                   | N        | Y               | Y   | N     | N     | N   | N             | Any           |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
-The sign ``*`` indicates that the corresponding example is not implemented in the project or is not
-functional.
+- The sign ``*`` indicates that the corresponding example is not implemented in the project.
+- The sign ``$`` indicates that I did not manage to make it work!
 
 
 Performance Comparison

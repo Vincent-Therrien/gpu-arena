@@ -4,11 +4,13 @@
 #include <GLFW/glfw3.h>
 #include <chrono>
 
-#define ARRAY_SIZE 10240000
+#define ARRAY_SIZE 10240000  // 1024 * 10000
 
 // Compute shader source (performs parallel reduction sum)
+// Refer to https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf for a discussion
+// of sum reduction on GPU if you have trouble understanding the code.
 const char* computeShaderSource = R"(
-#version 310 es
+#version 310 es  // This is the only version that works on my system!
 #define ARRAY_SIZE 1024
 #define HALF_ARRAY_SIZE 512u
 
@@ -67,19 +69,6 @@ GLuint createComputeShader(const char* source) {
     return program;
 }
 
-void peek_buffer()
-{
-    float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
-    std::vector<float> outputData(16, 0.0f);
-    if (mappedData) {
-        std::copy(mappedData, mappedData + 16, outputData.begin());
-        glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
-    }
-    for (unsigned int i = 0; i < 16; i++) {
-        std::cout << i << "    " << outputData[i] << std::endl;
-    }
-}
-
 int main()
 {
     // Initialize GLFW (no window needed)
@@ -98,10 +87,7 @@ int main()
     }
 
     // Input data
-    std::vector<float> inputData;
-    for (unsigned int i = 0; i < ARRAY_SIZE; i++) {
-        inputData.push_back(1);
-    }
+    std::vector<float> inputData(ARRAY_SIZE, 1.0f);
     size_t dataSize = inputData.size() * sizeof(float);
 
     GLuint inputBuffer, outputBuffer;
@@ -111,6 +97,7 @@ int main()
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, inputBuffer);
     glBufferData(GL_SHADER_STORAGE_BUFFER, dataSize, inputData.data(), GL_DYNAMIC_COPY);
 
+    // The reduced sum is 1024 times smaller than the input.
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
     glBufferData(GL_SHADER_STORAGE_BUFFER, dataSize / 1024, nullptr, GL_DYNAMIC_COPY);
 
@@ -133,6 +120,10 @@ int main()
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, outputBuffer);
     auto end = std::chrono::steady_clock::now();
     float* mappedData = (float*)glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_READ_ONLY);
+
+    // Aggregate the reduced sums. If the input array is bigger than 1024, we have to add up
+    // multiple values because the array is not totally reduced. We could do another pass of the
+    // shader to reduce the array again... or we can just use a for loop to add up the sums :).
     float total = 0;
     for (unsigned int i = 0; i < numWorkgroups; i++) {
         total += mappedData[i];
@@ -141,8 +132,8 @@ int main()
 
     double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() / 1000000.0;
 
-    std::cout << "Result: " << total << std::endl;
-    std::cout << "Duration (s): " << duration << std::endl;
+    std::cout << "Result: " << total << " (expected " << ARRAY_SIZE << ")." << std::endl;
+    std::cout << "Duration: " << duration << " s." << std::endl;
 
     // Cleanup
     glDeleteProgram(computeProgram);

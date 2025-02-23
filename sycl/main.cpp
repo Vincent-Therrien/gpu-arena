@@ -1,3 +1,5 @@
+// This code is not functional yet! I have not managed to compile it with oneAPI.
+
 #include <CL/sycl.hpp>
 #include <iostream>
 

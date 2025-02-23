@@ -23,7 +23,10 @@ cargo run
 The directory `compute` is a self-contained Rust program that uses the `wgpu` library to run
 compute shaders. It is based on the project https://github.com/googlefonts/compute-shader-101,
 licensed under the MIT license. This current project **sums the elements in an array** with a
-compute shader.
+compute shader. This code is not optimized! It should use sum reduction, but it uses fixed-length
+instead. Refer to the `opengl` compute example in this repository or the file
+https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf to see how to program sum
+reduction.
 
 To run the example, execute the following instructions:
 

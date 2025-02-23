@@ -1,1 +1,2 @@
-build/*
+*.comp
+*.spv

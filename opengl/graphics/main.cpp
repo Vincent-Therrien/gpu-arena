@@ -3,7 +3,7 @@
 #include <iostream>
 #include <chrono>
 
-// Vertex Shader Source Code
+// Vertex shader source code. This modifies the position of the vertices.
 const char* vertexShaderSource = R"(
     #version 330 core
 
@@ -25,7 +25,7 @@ const char* vertexShaderSource = R"(
     }
 )";
 
-// Fragment Shader Source Code
+// Fragment (i.e. pixel most of the time) shader source code. This determines the final colors.
 const char* fragmentShaderSource = R"(
     #version 330 core
 
@@ -56,7 +56,7 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create a window
-    GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Triangle", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL!", NULL, NULL);
     if (!window) {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
@@ -124,7 +124,6 @@ int main() {
 
     // Render Loop
     float rotationAngle = 0.0f;
-
     auto now = std::chrono::steady_clock::now();
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);  // Clear screen

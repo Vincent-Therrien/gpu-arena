@@ -1,7 +1,7 @@
 # Vulkan
 
 Vulkan is an API designed for computer graphics, but it also supports general-purpose computing
-through computing shaders. Vulkan uses SPIR-V as its shading language, which is not intended to be
+through compute shaders. Vulkan uses SPIR-V as its shading language, which is not intended to be
 human-readable. You can write the shaders in a human readable language, like GLSL and HLSL, and
 compile it to SPIR-V before feeding it to Vulkan. This project uses GLSL and the compiler
 `glslangValidator`.
@@ -40,24 +40,21 @@ glslangValidator -V ../shader.frag -o fragment.spv
 
 ## Computing Example
 
-The directory `computing` is a self-contained C++ project that uses Vulkan to accelerate parallel
-computations. It is not functional right now! The program compile but does not complete the
-computation when launched.
+Vulkan *can* be used for general-purpose computing, but I've found it really impractical. The file
+https://github.com/SaschaWillems/Vulkan/blob/master/examples/computeheadless/computeheadless.cpp is
+a minimal example that shows how to use Vulkan for computations. It's more than 600 lines long!
 
-The following instructions show how to build and run it. This only works on Linux! Use WSL if
-necessary!
+Vulkan has never been intended to be beginner-friendly; it's made for high performances and aimed
+at motivated users. Fortunately, the project Kompute (https://kompute.cc/), which is built atop
+Vulkan, lets you easily create and run compute shaders. It can be used with a C++ or Python
+interface; this repository uses Python (I just updated the example from the page
+https://kompute.cc/).
 
-Run the following commands:
+To try Kompute, run the following commands on Linux or WSL:
 
 ```
 cd compute
-sudo apt install vulkan-tools
-sudo apt install libvulkan-dev
-sudo apt install vulkan-validationlayers-dev spirv-tools
-mkdir build
-cd build
-cmake ..
-cmake --build .
-glslangValidator -V ../shader.comp -o shader.spv
-./compute
+sudo apt install spirv-tools  # Install glslangValidator
+pip install kp  # Install kompute, use a virtual environment ideally.
+python3 compute.py
 ```
