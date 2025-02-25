@@ -77,7 +77,7 @@ if __name__ == "__main__":
             float val;
         } push_const;
 
-        // Kompute also supports spec constants on initalization
+        // Kompute also supports spec constants on initialization
         layout(constant_id = 0) const float const_one = 0;
 
         void main() {

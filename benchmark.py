@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 BACKEND = "cpu-cpp"
 TASK = "1"
-MIN_N = 1000
-MAX_N = 1000_0000
+MIN_N = 10_000
+MAX_N = 10_000_000
 ITERATIONS = 5
 
 
@@ -35,7 +35,7 @@ def cpu_cpp():
         program = "cpu"
 
     x = []
-    durations = {1: [], 2: [], 4: [], 8: []}
+    durations = {1: [], 2: []}#, 4: [], 8: []}
     n = MIN_N
     while n <= MAX_N:
         print(f"N: {n}")
@@ -52,7 +52,7 @@ def cpu_cpp():
         n *= 10
 
     fig, ax = plt.subplots()
-    for t in (1, 2, 4, 8):
+    for t in (1, 2):#, 4, 8):
         ax.plot(x, durations[t], label=f"{t}")
     ax.set(xlabel='Number of data points', ylabel='Duration (s)')
     ax.set_xscale('log')
