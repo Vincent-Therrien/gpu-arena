@@ -20,6 +20,7 @@ GPU-accelerated programs, and execute them. Click on the links in the index tabl
 the ``readme`` file of each project for more information.
 
 .. note::
+
    The projects are minimal examples, not complete tutorials. The ``readme`` files in each
    subdirectory provide references to more detailed resources.
 
@@ -122,8 +123,10 @@ programmation de GPU, comment construire des programmes accélérés par GPU, et
 Cliquez sur les liens dans le tableau ci-dessous pour accéder à des informations supplémentaires
 sur chaque projet.
 
-**Note**: Ces projets sont des exemples minimalistes et non des tutoriels complets. Les fichiers
-``readme`` dans chaque sous-répertoire fournissent des ressources plus détaillées.
+.. note::
+
+   Ces projets sont des exemples minimalistes et non des tutoriels complets. Les fichiers
+   ``readme`` dans chaque sous-répertoire fournissent des ressources plus détaillées.
 
 
 Indice des projets
