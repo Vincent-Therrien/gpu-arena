@@ -13,4 +13,4 @@ pip install triton
 python3 main.py
 ```
 
-This script demonstrates how to compute a softmax function.
+This script demonstrates how to compute a sum reduction and a softmax function in Triton.
