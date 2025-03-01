@@ -19,21 +19,27 @@ Self-contained projects that show how to install GPU programming frameworks, bui
 GPU-accelerated programs, and execute them. Click on the links in the index table below to access
 the ``readme`` file of each project for more information.
 
-**Note**: The projects are minimal examples, not complete tutorials. The ``readme`` files in each
-subdirectory provide references to more detailed resources.
+.. note::
+   The projects are minimal examples, not complete tutorials. The ``readme`` files in each
+   subdirectory provide references to more detailed resources.
+
+Contributions are welcome - you can enrich the current projects and even add other GPU programming
+frameworks!
 
 
 Project Index
 -------------
+
+Click on the links in the leftmost column to access the corresponding subdirectory.
 
 +------------------------------------------+----------------------------+-------------------------------------------+---------------+
 | Framework                                | Applications               | Devices                                   | Operating     |
 |                                          +----------+-----------------+-----+-------+-------+-----+---------------+ Systems       +
 |                                          | Graphics | General-purpose | CPU |Nvidia | Intel | AMD | Apple Silicon |               |
 +==========================================+==========+=================+=====+=======+=======+=====+===============+===============+
-|`OpenGL <opengl/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | N             | Any           |
-|                                          |          |                 |     |       |       |     |               | (deprecated   |
-|                                          |          |                 |     |       |       |     |               | on Mac)       |
+|`OpenGL <opengl/readme.md>`__             | Y        | Y (since        | N   | Y     | Y     | Y   | N             | Any           |
+|                                          |          | version 4.3,    |     |       |       |     |               | (deprecated   |
+|                                          |          | 2012)           |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
@@ -54,17 +60,25 @@ Project Index
 |                                          |          |                 |     |       |       |     |               | (deprecated   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`SYCL <sycl/readme.md>`__                 | N        | Y$              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only |
+|`SYCL <sycl/readme.md>`__                 | N        | Y*              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         |
 |                                          |          |                 |     |       |       |     |               |               |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`CPU <cpu/readme.md>`__                   | N        | Y               | Y   | N     | N     | N   | N             | Any           |
+|`CPU <cpu/readme.md>`__ (baseline)        | N        | Y               | Y   | N     | N     | N   | N             | Any           |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
 - The sign ``*`` indicates that the corresponding example is not implemented in the project.
-- The sign ``$`` indicates that I did not manage to make it work!
+
+
+Improvements
+------------
+
+The following points can be implemented to improve the repository:
+
+- Implement an example that uses Metal.
+- Make the SYCL example functional.
 
 
 Performance Comparison
@@ -120,9 +134,9 @@ Indice des projets
 |                                          +----------+-----------------+-----+-------+-------+-----+---------------+ d'exploitation|
 |                                          |Graphique | Calculs généraux| CPU |Nvidia | Intel | AMD | Apple Silicon |               |
 +==========================================+==========+=================+=====+=======+=======+=====+===============+===============+
-|`OpenGL <opengl/readme.md>`__             | O        | O               | N   | O     | O     | O   | N             | Tous          |
-|                                          |          |                 |     |       |       |     |               | (réprouvé     |
-|                                          |          |                 |     |       |       |     |               | sur Mac)      |
+|`OpenGL <opengl/readme.md>`__             | O        | O (depuis la    | N   | O     | O     | O   | N             | Tous          |
+|                                          |          | version 4.3,    |     |       |       |     |               | (réprouvé     |
+|                                          |          | 2012)           |     |       |       |     |               | sur Mac)      |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 |`DirectX <directx/readme.md>`__           | O        | O               | N   | O     | O     | O   | N             | Windows       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
@@ -143,7 +157,7 @@ Indice des projets
 |                                          |          |                 |     |       |       |     |               | (réprouvé     |
 |                                          |          |                 |     |       |       |     |               | sur Mac)      |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
-|`SYCL <sycl/readme.md>`__                 | N        | O$              | O   | O     | O     | O   | O             | Tous (CPU     |
+|`SYCL <sycl/readme.md>`__                 | N        | O*              | O   | O     | O     | O   | O             | Tous (CPU     |
 |                                          |          |                 |     |       |       |     |               | seulement sur |
 |                                          |          |                 |     |       |       |     |               | Mac)          |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
@@ -154,4 +168,3 @@ Indice des projets
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+
 
 - Le signe ``*`` indique que l'exemple correspondant n'est pas inclus dans le projet.
-- Le signe ``$`` indique que je n'ai pas réussi à le faire fonctionner!
