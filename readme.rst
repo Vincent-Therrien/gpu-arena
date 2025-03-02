@@ -52,7 +52,7 @@ them.
 |`WebGPU <webgpu/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | Y             | Any           | WGSL             |
 |                                          |          |                 |     |       |       |     |               |               |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
-|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N   | N             | Windows,      | CUDA             |
+|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N** | N             | Windows,      | CUDA             |
 |                                          |          |                 |     |       |       |     |               | Linux         |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`OpenCL <opencl/readme.md>`__             | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           | OpenCL C         |
@@ -68,7 +68,8 @@ them.
 |`CPU <cpu/readme.md>`__ (baseline)        | N        | Y               | Y   | N     | N     | N   | N             | Any           | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
-- The sign ``*`` indicates that the corresponding example is not implemented in the project.
+- ``*``: The corresponding example is not implemented in the project.
+- ``**``: Supported on some AMD GPUs.
 
 
 Improvements
