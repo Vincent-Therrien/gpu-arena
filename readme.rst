@@ -19,13 +19,9 @@ Self-contained projects that show how to install GPU programming frameworks, bui
 GPU-accelerated programs, and execute them. Click on the links in the index table below to access
 the ``readme`` file of each project for more information.
 
-.. note::
-
-   The projects are minimal examples, not complete tutorials. The ``readme`` files in each
-   subdirectory provide references to more detailed resources.
-
-Contributions are welcome - you can enrich the current projects and even add other GPU programming
-frameworks!
+The projects are minimal examples, not complete tutorials. The ``readme`` files in each subdirectory
+provide references to more detailed resources. Contributions are welcome - you can enrich the
+current projects and even add other GPU programming frameworks!
 
 
 Project Index
