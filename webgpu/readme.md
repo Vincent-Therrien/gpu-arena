@@ -3,6 +3,16 @@
 WebGPU is a GPU API that can use Vulkan, DirectX, or Metal as its backend, making it truly
 multi-platform. It uses the WGSL shading language.
 
+WebGPU has some limitations. For instance, it only supports 32-bit values, so you have to find weird
+workarounds to use FP16 numbers. The project burn (https://github.com/tracel-ai/burn) uses WebGPU
+to accelerate computations because it is cross-platform, but it sometimes uses SPIR-V to perform
+some optimizations. But maybe the specification will evolve to support that more easily.
+
+Relevant links:
+
+- WebGPU specification: https://www.w3.org/TR/webgpu/
+- wgpu (Rust library): https://github.com/gfx-rs/wgpu
+
 
 ## Graphics Example
 

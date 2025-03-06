@@ -17,8 +17,7 @@ the function `pthread_create` to launch threads.
 ### Build the Project
 
 - Install [cmake](https://cmake.org/) on your system.
-- Install [clang](`https://clang.llvm.org/`) on your system (yes, even if you are on W*ndows! No
-  one uses VSC on my watch.)
+- Install [clang](`https://clang.llvm.org/`) on your system (yes, even if you are on W*ndows!)
 - Navigate in the `cpp` directory.
 - Create a `build` subdirectory.
 - Navigate in the `build` subdirectory.

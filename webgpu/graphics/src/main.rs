@@ -1,4 +1,5 @@
-// Based on https://github.com/sotrh/learn-wgpu (MIT license).
+// Based on the file https://github.com/sotrh/learn-wgpu, licensed under the MIT
+// license
 
 use glfw::{fail_on_errors, Action, Key, Window, WindowHint, ClientApiHint};
 use std::env::current_dir;

@@ -1,11 +1,17 @@
 # SYCL
 
-SYCL lets you write hardware-accelerated instructions into regular C++ code instead of manually
-delegating these computations to kernels. Intel seems to be the only major player supporting it.
+SYCL is a Khronos group specification that lets you write hardware-accelerated instructions into
+regular C++ code instead of manually delegating these computations to kernels. One implementation of
+SYCL is oneAPI, by Intel.
 
-This project does not work. I obtain the error described at
-https://github.com/intel/llvm/issues/15910. In theory it could compile if I reinstalled the compiler
-toolchain `¯\_(ツ)_/¯`
+Relevant links:
+
+- Khronos group page on SYCL: https://www.khronos.org/sycl/
+- Tutorial: https://sycl.tech/getting-started
+
+This project does not work! I obtain the error described at
+https://github.com/intel/llvm/issues/15910. In theory, it could compile if I reinstalled the whole
+compiler toolchain `¯\_(ツ)_/¯`.
 
 
 ## Build

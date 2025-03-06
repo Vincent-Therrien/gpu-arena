@@ -40,19 +40,19 @@ them.
 |                                          |          | version 4.3,    |     |       |       |     |               | (deprecated   |                  |
 |                                          |          | 2012)           |     |       |       |     |               | on Mac)       |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+|`Metal <metal/readme.md>`__               | Y*       | Y*              | N   | N     | N     | N   | Y             | Mac / iOS     | MSL              |
+|                                          |          |                 |     |       |       |     |               |               |                  |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`DirectX <directx/readme.md>`__           | Y        | Y               | N   | Y     | Y     | Y   | N             | Windows       | HLSL             |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`Vulkan <vulkan/readme.md>`__             | Y        | Y (implemented  | N   | Y     | Y     | Y   | N             | Any           | Anything that    |
 |                                          |          | with kompute)   |     |       |       |     |               | (deprecated   | compiles to      |
 |                                          |          |                 |     |       |       |     |               | on Mac)       | SPIR-V           |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
-|`Metal <metal/readme.md>`__               | Y*       | Y*              | N   | N     | N     | N   | Y             | Mac / iOS     | MSL              |
-|                                          |          |                 |     |       |       |     |               |               |                  |
-+------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`WebGPU <webgpu/readme.md>`__             | Y        | Y               | N   | Y     | Y     | Y   | Y             | Any           | WGSL             |
 |                                          |          |                 |     |       |       |     |               |               |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
-|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N** | N             | Windows,      | CUDA             |
+|`CUDA <cuda/readme.md>`__                 | N        | Y               | N   | Y     | N     | N   | N             | Windows,      | CUDA             |
 |                                          |          |                 |     |       |       |     |               | Linux         |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`OpenCL <opencl/readme.md>`__             | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           | OpenCL C         |
@@ -62,14 +62,39 @@ them.
 |`SYCL <sycl/readme.md>`__                 | N        | Y*              | Y   | Y     | Y     | Y   | Y             | Any (CPU-only | C++ extensions   |
 |                                          |          |                 |     |       |       |     |               | on Mac)       |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
-|`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         | Python           |
+|`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         | Decorated Python |
 |                                          |          |                 |     |       |       |     |               |               | functions        |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`CPU <cpu/readme.md>`__ (baseline)        | N        | Y               | Y   | N     | N     | N   | N             | Any           | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
 - ``*``: The corresponding example is not implemented in the project.
-- ``**``: Supported on some AMD GPUs.
+
+
+Relevant Resources
+------------------
+
+Here are other interesting resources to learn GPU programming:
+
+- Lexicon that compares the vocabulary used in different GPU programming frameworks:
+  https://github.com/ROCm/HIP/blob/amd-staging/docs/reference/terms.md
+- Step-by-step guide that explains how to optimize a GPU-accelerate program (CUDA):
+  https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
+- Blog post that explains the history of GPU programming frameworks, focusing on graphics
+  applications: https://web.archive.org/web/20250000000000*/https://cohost.org/mcc/post/1406157-i-want-to-talk-about-webgpu
+
+
+Interesting Projects
+--------------------
+
+I found some really promising projects related to GPUs:
+
+- ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) enables seamless integration of GPU code into
+  Rust code. It's a little like SYCL but for RUST, but in contrast to SYCL, rust-gpu supports both
+  general-purpose and graphics applications. The project is not ready for production yet.
+- ``burn`` (https://github.com/tracel-ai/burn) is a deep learning framework that uses WebGPU as its
+  backend for increased portability. It also uses SPIR-V to perform some optimizations that WebGPU
+  does not support.
 
 
 Improvements
@@ -79,24 +104,6 @@ The following points can be implemented to improve the repository:
 
 - Implement an example that uses Metal.
 - Make the SYCL example functional.
-
-
-Performance Comparison
-----------------------
-
-The following table compares the performances of some backends to calculate the sum of elements in
-an array through sum reduction. Keep in mind that results vary depending on the system and are
-influenced by memory transfer overheads. This table is provided only as an indication.
-
-+---------------------+-------------------------------------------+
-| Framework           | Sum Reduction Time (s) for Array Sizes    |
-|                     +----------+----------+----------+----------+
-|                     | 256      | 1024     | 1e6      | 1e7      |
-+=====================+==========+==========+==========+==========+
-| C++ (1 CPU thread)  | 1e-06    | 1e-06    | 0.000191 | 0.001341 |
-+---------------------+----------+----------+----------+----------+
-| OpenGL              | 0.000605 | 0.000563 | 0.000582 | 0.000567 |
-+---------------------+----------+----------+----------+----------+
 
 
 Benchmarking
@@ -142,12 +149,12 @@ Indice des projets
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`DirectX <directx/readme.md>`__           | O        | O               | N   | O     | O     | O   | N             | Windows       | HLSL             |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+|`Metal <metal/readme.md>`__               | O*       | O*              | N   | N     | N     | N   | O             | Mac / iOS     | MSL              |
+|                                          |          |                 |     |       |       |     |               |               |                  |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`Vulkan <vulkan/readme.md>`__             | O        | O (avec         | N   | O     | O     | O   | N             | Tous          | Tous se qui se   |
 |                                          |          | kompute)        |     |       |       |     |               | (réprouvé     | compile vers     |
 |                                          |          |                 |     |       |       |     |               | sur Mac)      |SPIR-V            |
-+------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
-|`Metal <metal/readme.md>`__               | O*       | O*              | N   | N     | N     | N   | O             | Mac / iOS     | MSL              |
-|                                          |          |                 |     |       |       |     |               |               |                  |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`WebGPU <webgpu/readme.md>`__             | O        | O               | N   | O     | O     | O   | O             | Tous          | WGSL             |
 |                                          |          |                 |     |       |       |     |               |               |                  |
@@ -170,3 +177,51 @@ Indice des projets
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
 - Le signe ``*`` indique que l'exemple correspondant n'est pas inclus dans le projet.
+
+
+Ressources additionnelles
+-------------------------
+
+- Lexique qui compare le vocabulaire utilisé par différents outils de programmation de GPU :
+  https://github.com/ROCm/HIP/blob/amd-staging/docs/reference/terms.md
+- Guide d'optimisation de programme pour GPU (CUDA)
+  https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
+- Publication expliquant l'histoire des outils de programmation graphique de GPU :
+  https://web.archive.org/web/20250000000000*/https://cohost.org/mcc/post/1406157-i-want-to-talk-about-webgpu
+
+
+Projets d'intérêt
+-----------------
+
+Projets récents en lien avec les GPU :
+
+- ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) permet d'intégrer des instructions destinées
+  aux GPU dans du code Rust régulier, un peu comme SYCL le permet en C++. Mais rust-gpu supporte,
+  en plus, les applications graphiques. Le projet n,est pas encore prêt pour la production.
+- ``burn`` (https://github.com/tracel-ai/burn) est un cadriciel d'apprentissage profond qui utilise
+  WebGPU pour un portabilité accrue. Il utilise aussi SPIR-V pour appliquer des optimisations non
+  supportées par WebGPU.
+
+
+Améliorations
+-------------
+
+Ce dépôt peut être amélioré par les points suivants:
+
+- Ajouter un exemple qui utilise Metal.
+- Faire fonctionner l'exemple avec SYCL.
+
+
+Comparaisons
+-------------
+
+Exécutez le script ``benchmark.py`` pour comparer les performances d'un programme utilisant
+plusieurs fils d'exécution sur CPU:
+
+.. code:: bash
+
+   # Linux
+   python3 benchmark.py
+
+   # OS that begins with the letter W
+   py benchmark.py

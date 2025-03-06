@@ -1,3 +1,8 @@
+"""Minimal kompute example.
+
+This script is an updated version of the example found at https://kompute.cc/.
+"""
+
 import os
 import numpy as np
 import kp

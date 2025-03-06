@@ -6,6 +6,11 @@ only on Windows `:(`.
 
 DirectX uses the HLSL shading language.
 
+Relevant links:
+
+- Rendering pipeline: https://learn.microsoft.com/en-us/windows/win32/direct3d12/direct3d-12-graphics
+- Compute shaders: https://learn.microsoft.com/en-us/windows/win32/direct3d11/direct3d-11-advanced-stages-compute-shader
+
 
 ## Graphics
 

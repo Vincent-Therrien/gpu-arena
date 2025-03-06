@@ -1,6 +1,11 @@
 """
-    Build and run all programs. If a program fails to build or run, it is
-    discarded.
+    Build and run multithreaded CPU programs.
+
+    A multithreaded is not necessarily faster than a purely sequential one!
+    Multithreading entails some overhead when splitting data and coordinating
+    threads, so a single thread often outperforms multiple ones for small
+    datasets. This script lets you measure which thread count is most efficient
+    for a given dataset size.
 
     Usage:
 
@@ -11,11 +16,16 @@ import os
 import subprocess
 import matplotlib.pyplot as plt
 
-BACKEND = "cpu-cpp"
-TASK = "1"
-MIN_N = 10_000
-MAX_N = 10_000_000
-ITERATIONS = 5
+BACKEND = "cpu-cpp"  # WHich accelerated program to use (either cpu-cpp or cpu-rust).
+TASK = "1"  # Refer to the file `cpu/readme.md`` for a description of each task.
+MIN_N = 10_000  # Minimum dataset size.
+MAX_N = 10_000_000  # Maximum dataset size.
+ITERATIONS = 5  # Number of iterations to perform. The duration is the average of all iterations.
+N_THREADS = (1, 2)  # Number of threads to use in each comparison.
+
+durations = {}
+for n in N_THREADS:
+    durations[n] = []
 
 
 def cpu_cpp():
@@ -35,7 +45,6 @@ def cpu_cpp():
         program = "cpu"
 
     x = []
-    durations = {1: [], 2: []}#, 4: [], 8: []}
     n = MIN_N
     while n <= MAX_N:
         print(f"N: {n}")
@@ -52,7 +61,7 @@ def cpu_cpp():
         n *= 10
 
     fig, ax = plt.subplots()
-    for t in (1, 2):#, 4, 8):
+    for t in N_THREADS:
         ax.plot(x, durations[t], label=f"{t}")
     ax.set(xlabel='Number of data points', ylabel='Duration (s)')
     ax.set_xscale('log')
@@ -64,7 +73,6 @@ def cpu_cpp():
 def cpu_rust():
     os.chdir(os.path.dirname(os.path.abspath(__file__)) + "/cpu/rust")
     x = []
-    durations = {1: [], 2: [], 4: [], 8: []}
     n = MIN_N
     while n <= MAX_N:
         print(f"N: {n}")
@@ -88,7 +96,7 @@ def cpu_rust():
         n *= 10
 
     fig, ax = plt.subplots()
-    for t in (1, 2, 4, 8):
+    for t in N_THREADS:
         ax.plot(x, durations[t], label=f"{t}")
     ax.set(xlabel='Number of data points', ylabel='Duration (s)')
     ax.set_xscale('log')

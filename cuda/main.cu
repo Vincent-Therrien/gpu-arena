@@ -60,17 +60,13 @@ float sumArrayOnGPU(float *h_array) {
     return totalSum;
 }
 
-// Main function
+// CPU code
 int main() {
     float h_array[N];
-
-    // Initialize array with values
     for (int i = 0; i < N; i++) {
-        h_array[i] = 1.0f;  // Set all elements to 1 for testing
+        h_array[i] = 1.0f;
     }
-
     float sum = sumArrayOnGPU(h_array);
     std::cout << "Sum: " << sum << std::endl;
-
     return 0;
 }

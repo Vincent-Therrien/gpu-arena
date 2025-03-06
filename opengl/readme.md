@@ -3,6 +3,12 @@
 OpenGL is an application programming interface designed for computer graphics, but it also supports
 general-purpose computing through computing shaders. OpenGL uses GLSL to write shaders.
 
+Relevant links:
+
+- History of OpenGL: https://www.khronos.org/opengl/wiki/History_of_OpenGL
+- Rendering pipeline: https://www.khronos.org/opengl/wiki/Rendering_Pipeline_Overview
+- Compute shaders: https://www.khronos.org/opengl/wiki/Compute_Shader
+
 
 ## Graphics Example
 
@@ -36,7 +42,7 @@ understand how it works.
 ## Computing Example
 
 The directory `computing` is a self-contained C++ project that uses OpenGL to accelerate parallel
-computations.
+computations. The program computes the sum of elements in an array through sum reduction.
 
 The following instructions show how to build and run it. This only works on Linux! Use WSL if
 necessary!
@@ -53,5 +59,3 @@ cmake ..
 cmake --build .
 ./computing
 ```
-
-This program computes the sum of elements in an array through sum reduction.

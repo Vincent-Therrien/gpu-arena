@@ -1,3 +1,6 @@
+// Based on the file https://github.com/googlefonts/compute-shader-101, licensed under the MIT
+// license
+
 use std::time::Instant;
 use wgpu::{util::DeviceExt, PipelineCompilationOptions};
 use bytemuck;

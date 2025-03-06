@@ -47,14 +47,14 @@ a minimal example that shows how to use Vulkan for computations. It's more than 
 Vulkan has never been intended to be beginner-friendly; it's made for high performances and aimed
 at motivated users. Fortunately, the project Kompute (https://kompute.cc/), which is built atop
 Vulkan, lets you easily create and run compute shaders. It can be used with a C++ or Python
-interface; this repository uses Python (I just updated the example from the page
-https://kompute.cc/).
+interface; this repository uses Python. It is an updated version of the example found at
+https://kompute.cc/.
 
 To try Kompute, run the following commands on Linux or WSL:
 
 ```
 cd compute
 sudo apt install spirv-tools  # Install glslangValidator
-pip install kp  # Install kompute, use a virtual environment ideally.
+pip install kp  # Install kompute. Ideally, use a virtual environment!
 python3 compute.py
 ```
