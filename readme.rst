@@ -81,10 +81,10 @@ them.
 - AcceleratedKernels.jl (https://juliagpu.github.io/AcceleratedKernels.jl/stable/): A Julia project
   that can accelerate parallel computations with CPUs and GPUs. Uses multiple backends (oneAPI,
   ROCm, Metal, CUDA) to improve portability.
-- OpenAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): A
+- oneAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): A
   software stack for high performance computing by Intel. Based on SYCL, but also adds custom
   extensions to implement new features.
-- OpenM (https://www.openmp.org/): An API for parallel computations that uses directive-based
+- OpenMP (https://www.openmp.org/): An API for parallel computations that uses directive-based
   programming instead of kernels. Can use CPUs and GPUs. This
   `presentation <https://www.openmp.org/wp-content/uploads/2021-10-20-Webinar-OpenMP-Offload-Programming-Introduction.pdf>`_
   gives an introduction to GPU programming with OpenMP.
@@ -210,10 +210,10 @@ liens pour en apprendre davantage.
 - AcceleratedKernels.jl (https://juliagpu.github.io/AcceleratedKernels.jl/stable/): Un projet basé
   sur Julia qui accélère les calculs parallèles avec des CPU et GPU. Utilise plusieurs supports
   dorsaux (oneAPI, ROCm, Metal, CUDA) pour améliorer la portabilité.
-- OpenAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): Une pile
+- oneAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): Une pile
   logicielle pour le calcul haute performance par Intel. Basé sur SYCL, mais utilise aussi des
   extensions spécifiques au projet pour implémenter de nouvelles fonctionnalités.
-- OpenM (https://www.openmp.org/): Une API pour calculs parallèles qui utilise la programmation
+- OpenMP (https://www.openmp.org/): Une API pour calculs parallèles qui utilise la programmation
   basée sur les directives au lieu de noyaux. Peut utiliser des CPU et GPU. La
   `présentation <https://www.openmp.org/wp-content/uploads/2021-10-20-Webinar-OpenMP-Offload-Programming-Introduction.pdf>`_
   donne une introduction au calcul sur GPU avec OpenMP.
