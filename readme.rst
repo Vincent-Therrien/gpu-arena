@@ -83,6 +83,7 @@ them.
   ROCm, Metal, CUDA) to improve portability.
 - Bend (https://github.com/HigherOrderCO/Bend): a programming language for parallel computing.
 - Chapel (https://chapel-lang.org/gpu/): another programming language for parallel computing.
+- Mojo (https://www.modular.com/mojo): a programming language for heterogeneous computing.
 - oneAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): A
   software stack for high performance computing by Intel. Based on SYCL, but also adds custom
   extensions to implement new features.
@@ -219,6 +220,7 @@ liens pour en apprendre davantage.
   parallèle.
 - Chapel (https://chapel-lang.org/gpu/): un autre langage de programmation pour le calcul
   parallèle.
+- Mojo (https://www.modular.com/mojo): un langage pour calcul hétérogène.
 - oneAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): Une pile
   logicielle pour le calcul haute performance par Intel. Basé sur SYCL, mais utilise aussi des
   extensions spécifiques au projet pour implémenter de nouvelles fonctionnalités.
