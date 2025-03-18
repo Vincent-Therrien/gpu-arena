@@ -141,7 +141,7 @@ int main() {
 
         auto end = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - now).count() / 1000.0;
-        //rotationAngle += duration * 0.5;
+        rotationAngle += duration * 0.5;
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
         now = end;
