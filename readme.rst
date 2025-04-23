@@ -65,6 +65,9 @@ them.
 |`Triton <triton/readme.md>`__             | N        | Y               | N   | Y     | N     | Y   | N             | Linux         | Decorated Python |
 |                                          |          |                 |     |       |       |     |               |               | functions        |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+| `OpenMP <openmp/readme.md>`__            | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           | Compiler         |
+|                                          |          |                 |     |       |       |     |               |               | directives       |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`CPU <cpu/readme.md>`__ (baseline)        | N        | Y               | Y   | N     | N     | N   | N             | Any           | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
@@ -88,9 +91,6 @@ them.
   software stack for high performance computing by Intel. Based on SYCL, but also adds custom
   extensions to implement new features.
 - OpenACC (https://www.openacc.org/): A parallel computing standard
-- OpenMP (https://www.openmp.org/): An API for parallel computations that uses directive-based
-  programming instead of kernels. Can use CPUs and GPUs. This
-  `presentation <https://www.openmp.org/wp-content/uploads/2021-10-20-Webinar-OpenMP-Offload-Programming-Introduction.pdf>`_
   gives an introduction to GPU programming with OpenMP.
 - ROCm (https://www.amd.com/fr/products/software/rocm.html): A software stack for high performance
   computing by AMD. Supports OpenCL, HIP, OpenMP.
@@ -188,6 +188,9 @@ Indice des projets
 |`Triton <triton/readme.md>`__             | N        | O               | N   | O     | N     | O   | N             | Linux         | Fonctions        |
 |                                          |          |                 |     |       |       |     |               |               | Pythons          |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+| `OpenMP <openmp/readme.md>`__            | N        | O               | O   | O     | O     | O   | O             | Tous          | Directives de    |
+|                                          |          |                 |     |       |       |     |               |               | compilateur      |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`CPU <cpu/readme.md>`__                   | N        | O               | O   | N     | N     | N   | N             | Tous          | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
@@ -213,9 +216,6 @@ liens pour en apprendre davantage.
   logicielle pour le calcul haute performance par Intel. Basé sur SYCL, mais utilise aussi des
   extensions spécifiques au projet pour implémenter de nouvelles fonctionnalités.
 - OpenACC (https://www.openacc.org/): un standard de calcul parallèle.
-- OpenMP (https://www.openmp.org/): Une API pour calculs parallèles qui utilise la programmation
-  basée sur les directives au lieu de noyaux. Peut utiliser des CPU et GPU. La
-  `présentation <https://www.openmp.org/wp-content/uploads/2021-10-20-Webinar-OpenMP-Offload-Programming-Introduction.pdf>`_
   donne une introduction au calcul sur GPU avec OpenMP.
 - ROCm (https://www.amd.com/fr/products/software/rocm.html): Une pile logicielle pour calcule de
   haute performance par AMD. Supporte OpenCL, HIP, OpenMP.
