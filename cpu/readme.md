@@ -5,7 +5,8 @@ Algorithm acceleration with multi-threading on CPUs.
 Most projects in this repository demonstrate how to use GPUs (graphics processing units), which
 excel at processing **large** amounts of ideally **weakly dependent** data. GPUs are inadequate for
 many situations, in which case you can fall back on CPUs (central processing units). This repository
-contains programs written in C++ and Rust to show how to use threads to accelerate algorithms.
+contains programs written in C++ and Rust to show how to use threads to accelerate algorithms. This
+is one way of achieving parallelism with a CPU.
 
 
 ## C++ Version
@@ -43,9 +44,7 @@ build\Debug\cpu.exe <task> <n> <iterations> <threads>
 
 where:
 
-- `<task>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute
-  (refer to the [root readme file](https://github.com/Vincent-Therrien/gpu-arena/tree/main) to view
-  the tasks).
+- `<task>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute.
 - `<n>` is the dimension of the input data.
 - `<iterations>` is the number of times that the computation must be repeated. The execution time
   reported by the program is the arithmetic mean of the duration of all iterations.
@@ -78,9 +77,8 @@ target\release\cpu --task <t> --n <n> --iterations <i> --thread <c>
 
 where
 
-- `<t>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute
-  (refer to the [root readme file](https://github.com/Vincent-Therrien/gpu-arena/tree/main) to view
-  the tasks). Default: 1
+- `<t>` is an integer ranging from 1 to 3, inclusively, that designates the task to execute.
+  Default: 1
 - `<n>` is the dimension of the input data. Default: 1000
 - `<i>` is the number of times that the computation must be repeated. The execution time reported
   by the program is the arithmetic mean of the duration of all iterations. Default: 1

@@ -98,23 +98,17 @@ them.
   a shading language and compiler that can target multiple APIs.
 
 
-Relevant Resources
-------------------
-
-Here are other interesting resources to learn GPU programming:
-
-- Lexicon that compares the vocabulary used in different GPU programming frameworks:
-  https://github.com/ROCm/HIP/blob/amd-staging/docs/reference/terms.md
-- Step-by-step guide that explains how to optimize a GPU-accelerate program (CUDA):
-  https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
-- Blog post that explains the history of GPU programming frameworks, focusing on graphics
-  applications: https://web.archive.org/web/20250000000000*/https://cohost.org/mcc/post/1406157-i-want-to-talk-about-webgpu
-
-
-Interesting Projects
+Additional Resources
 --------------------
 
-I found some really promising projects related to GPUs:
+- Step-by-step guide that explains how to optimize a GPU-accelerate program (CUDA):
+  https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
+- Introduction to CUDA and OpenCL programming: https://parlab.eecs.berkeley.edu/sites/all/parlab/files/CatanzaroIntroToCUDAOpenCL_0.pdf.
+  Check the slide 27 for a comparison of the lexicon used in the two frameworks.
+
+
+Promising Projects Related to GPUs
+----------------------------------
 
 - ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) enables seamless integration of GPU code into
   Rust code. It's a little like SYCL but for RUST, but in contrast to SYCL, rust-gpu supports both
@@ -122,15 +116,6 @@ I found some really promising projects related to GPUs:
 - ``burn`` (https://github.com/tracel-ai/burn) is a deep learning framework that uses WebGPU as its
   backend for increased portability. It also uses SPIR-V to perform some optimizations that WebGPU
   does not support.
-
-
-Improvements
-------------
-
-The following points can be implemented to improve the repository:
-
-- Implement an example that uses Metal.
-- Make the SYCL example functional.
 
 
 Benchmarking
@@ -241,18 +226,14 @@ liens pour en apprendre davantage.
 Ressources additionnelles
 -------------------------
 
-- Lexique qui compare le vocabulaire utilisé par différents outils de programmation de GPU :
-  https://github.com/ROCm/HIP/blob/amd-staging/docs/reference/terms.md
-- Guide d'optimisation de programme pour GPU (CUDA)
+- Guide d'optimisation de programme pour GPU (CUDA) :
   https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
-- Publication expliquant l'histoire des outils de programmation graphique de GPU :
-  https://web.archive.org/web/20250000000000*/https://cohost.org/mcc/post/1406157-i-want-to-talk-about-webgpu
+- Introduction à la programmation sur CUDA et OpenCL : https://parlab.eecs.berkeley.edu/sites/all/parlab/files/CatanzaroIntroToCUDAOpenCL_0.pdf.
+  Consultez la diapositive 27 pour une comparaison des lexiques utilisés par chaque cadre logiciel.
 
 
-Projets d'intérêt
------------------
-
-Projets récents en lien avec les GPU :
+Projets d'intérêt en lien avec les GPU
+--------------------------------------
 
 - ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) permet d'intégrer des instructions destinées
   aux GPU dans du code Rust régulier, un peu comme SYCL le permet en C++. Mais rust-gpu supporte,
@@ -260,15 +241,6 @@ Projets récents en lien avec les GPU :
 - ``burn`` (https://github.com/tracel-ai/burn) est un cadriciel d'apprentissage profond qui utilise
   WebGPU pour un portabilité accrue. Il utilise aussi SPIR-V pour appliquer des optimisations non
   supportées par WebGPU.
-
-
-Améliorations
--------------
-
-Ce dépôt peut être amélioré par les points suivants:
-
-- Ajouter un exemple qui utilise Metal.
-- Faire fonctionner l'exemple avec SYCL.
 
 
 Comparaisons
