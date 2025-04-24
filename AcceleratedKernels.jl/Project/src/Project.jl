@@ -1,7 +1,7 @@
 import AcceleratedKernels as AK
 using CUDA, GPUArrays
 
-# Define a reduce function used to sum up all two elements.
+# Define a reduce function to sum up all two elements.
 f = (a, b) -> a + b
 
 # Define a neutral element for the operation. This is used when there are more threads than elements
@@ -16,5 +16,5 @@ v = CuArray(rand(Float32, 10000) * 2.0 .- 1.0)
 vsum = AK.reduce(f, v; init=zero(eltype(v)))
 
 # The result of the sum follows a shifted Irwin–Hall distribution. Since there are 10000 elements,
-# std = sqrt(10000 / 3) ~ 57.7. So the sum will mostly fall in the range [-58, 58].
+# std = sqrt(10000 / 3) ~ 57.7. So the sum will typically fall in the range [-58, 58].
 print(vsum)
