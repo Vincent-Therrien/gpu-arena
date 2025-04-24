@@ -90,8 +90,7 @@ them.
 - oneAPI (https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html): A
   software stack for high performance computing by Intel. Based on SYCL, but also adds custom
   extensions to implement new features.
-- OpenACC (https://www.openacc.org/): A parallel computing standard
-  gives an introduction to GPU programming with OpenMP.
+- OpenACC (https://www.openacc.org/): A parallel computing standard.
 - ROCm (https://www.amd.com/fr/products/software/rocm.html): A software stack for high performance
   computing by AMD. Supports OpenCL, HIP, OpenMP.
 - Slang (https://www.khronos.org/news/press/khronos-group-launches-slang-initiative-hosting-open-source-compiler-contributed-by-nvidia):
@@ -214,7 +213,6 @@ liens pour en apprendre davantage.
   logicielle pour le calcul haute performance par Intel. Basé sur SYCL, mais utilise aussi des
   extensions spécifiques au projet pour implémenter de nouvelles fonctionnalités.
 - OpenACC (https://www.openacc.org/): un standard de calcul parallèle.
-  donne une introduction au calcul sur GPU avec OpenMP.
 - ROCm (https://www.amd.com/fr/products/software/rocm.html): Une pile logicielle pour calcule de
   haute performance par AMD. Supporte OpenCL, HIP, OpenMP.
 - Slang (https://www.khronos.org/news/press/khronos-group-launches-slang-initiative-hosting-open-source-compiler-contributed-by-nvidia):
