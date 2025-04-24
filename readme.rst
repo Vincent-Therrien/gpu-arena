@@ -68,6 +68,9 @@ them.
 | `OpenMP <openmp/readme.md>`__            | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           | Compiler         |
 |                                          |          |                 |     |       |       |     |               |               | directives       |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+| `AcceleratedKernels.jl                   | N        | Y               | Y   | Y     | Y     | Y   | Y             | Any           | Julia functions  |
+| <AcceleratedKernels.jl/readme.md>`__     |          |                 |     |       |       |     |               |               |                  |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`CPU <cpu/readme.md>`__ (baseline)        | N        | Y               | Y   | N     | N     | N   | N             | Any           | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
@@ -81,9 +84,6 @@ There are even more frameworks that can be used to program GPUs! Below are liste
 no example is implemented in this repository, but you can follow the links to learn more about
 them.
 
-- AcceleratedKernels.jl (https://juliagpu.github.io/AcceleratedKernels.jl/stable/): A Julia project
-  that can accelerate parallel computations with CPUs and GPUs. Uses multiple backends (oneAPI,
-  ROCm, Metal, CUDA) to improve portability.
 - Bend (https://github.com/HigherOrderCO/Bend): a programming language for parallel computing.
 - Chapel (https://chapel-lang.org/gpu/): another programming language for parallel computing.
 - Mojo (https://www.modular.com/mojo): a programming language for heterogeneous computing.
@@ -144,10 +144,8 @@ programmation de GPU, comment construire des programmes accélérés par GPU, et
 Cliquez sur les liens dans le tableau ci-dessous pour accéder à des informations supplémentaires
 sur chaque projet.
 
-.. note::
-
-   Ces projets sont des exemples minimalistes et non des tutoriels complets. Les fichiers
-   ``readme`` dans chaque sous-répertoire fournissent des ressources plus détaillées.
+Ces projets sont des exemples minimalistes et non des tutoriels complets. Les fichiers
+``readme`` dans chaque sous-répertoire fournissent des ressources plus détaillées.
 
 
 Indice des projets
@@ -191,6 +189,9 @@ Indice des projets
 | `OpenMP <openmp/readme.md>`__            | N        | O               | O   | O     | O     | O   | O             | Tous          | Directives de    |
 |                                          |          |                 |     |       |       |     |               |               | compilateur      |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
+| `AcceleratedKernels.jl                   | N        | O               | O   | O     | O     | O   | O             | Tous          | Fonctions Julia  |
+| <AcceleratedKernels.jl/readme.md>`__     |          |                 |     |       |       |     |               |               |                  |
++------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 |`CPU <cpu/readme.md>`__                   | N        | O               | O   | N     | N     | N   | N             | Tous          | N/A              |
 +------------------------------------------+----------+-----------------+-----+-------+-------+-----+---------------+---------------+------------------+
 
@@ -204,9 +205,6 @@ Encore d'autres cadriciels sont disponibles pour programmer des GPU! La liste ci
 quelques-uns. Aucun exemple n'est implémenté pour eux dans ce dépôt, mais vous pouvez suivre les
 liens pour en apprendre davantage.
 
-- AcceleratedKernels.jl (https://juliagpu.github.io/AcceleratedKernels.jl/stable/): Un projet basé
-  sur Julia qui accélère les calculs parallèles avec des CPU et GPU. Utilise plusieurs supports
-  dorsaux (oneAPI, ROCm, Metal, CUDA) pour améliorer la portabilité.
 - Bend (https://github.com/HigherOrderCO/Bend): un langage de programmation pour le calcul
   parallèle.
 - Chapel (https://chapel-lang.org/gpu/): un autre langage de programmation pour le calcul

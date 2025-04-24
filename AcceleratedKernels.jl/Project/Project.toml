@@ -1,0 +1,9 @@
+name = "Project"
+uuid = "b047b328-b947-4008-9592-27f6f2e42ee3"
+authors = ["Vincent Therrien"]
+version = "0.1.0"
+
+[deps]
+AcceleratedKernels = "6a4ca0a5-0e36-4168-a932-d9be78d558f1"
+CUDA = "052768ef-5323-5732-b1bb-66c8b64840ba"
+GPUArrays = "0c68f7d7-f131-5f86-a1c3-88cf8149b2d7"
