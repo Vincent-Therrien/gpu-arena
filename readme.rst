@@ -104,7 +104,7 @@ them.
 GPU Projects
 ------------
 
-Some projects that use general-purpose GPU programming frameworks:
+Some projects that use GPU programming. Don't hesitate to create a PR if you want to add any!
 
 - Artificial Intelligence:
     - burn (https://github.com/tracel-ai/burn): Deep learning framework that uses WebGPU as its
@@ -114,6 +114,9 @@ Some projects that use general-purpose GPU programming frameworks:
       GPU acceleration.
     - TensorFlow (https://github.com/tensorflow/tensorflow): Deep learning library that uses CUDA for
       GPU acceleration.
+- Graphics:
+    - Godot Shaders (https://godotshaders.com/): A collection of shaders that can be used in the
+      Godot game engine. It uses a shading language similar to GLSL.
 - Physics:
     - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Computational fluid dynamics software
       implemented with OpenCL.
@@ -248,7 +251,7 @@ liens pour en apprendre davantage.
 Projets
 -------
 
-Quelques projets de calculs ;a usage général sur GPU :
+Quelques projets qui utilisent des GPU. N'hésitez pas à créer un PR pour en ajouter à la liste :
 
 - Intelligence artificielle :
     - burn (https://github.com/tracel-ai/burn) : Cadriciel d'apprentissage profond qui utilise
@@ -258,6 +261,9 @@ Quelques projets de calculs ;a usage général sur GPU :
       CUDA et ROCm.
     - TensorFlow (https://github.com/tensorflow/tensorflow) :  Cadriciel d'apprentissage profond
       qui utilise CUDA.
+- Graphisme :
+    - Godot Shaders (https://godotshaders.com/) : Un ensemble de nuanceurs qui peuvent être utilisés
+      avec le moteur de jeu Godot. Ils utilisent un langage de nuanceur proche de GLSL.
 - Physique :
     - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Programme de dynamique des fluides
       réalisé avec OpenCL.
