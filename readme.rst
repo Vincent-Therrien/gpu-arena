@@ -107,28 +107,28 @@ GPU Projects
 Some projects that use general-purpose GPU programming frameworks:
 
 - Artificial Intelligence:
-  - burn (https://github.com/tracel-ai/burn): Deep learning framework that uses WebGPU as its
-    backend for increased portability. It also uses SPIR-V to perform some optimizations that
-    WebGPU does not support.
-  - PyTorch (https://github.com/pytorch/pytorch): Deep learning library that uses CUDA and ROCm for
-    GPU acceleration.
-  - TensorFlow (https://github.com/tensorflow/tensorflow): Deep learning library that uses CUDA for
-    GPU acceleration.
+    - burn (https://github.com/tracel-ai/burn): Deep learning framework that uses WebGPU as its
+      backend for increased portability. It also uses SPIR-V to perform some optimizations that
+      WebGPU does not support.
+    - PyTorch (https://github.com/pytorch/pytorch): Deep learning library that uses CUDA and ROCm for
+      GPU acceleration.
+    - TensorFlow (https://github.com/tensorflow/tensorflow): Deep learning library that uses CUDA for
+      GPU acceleration.
 - Physics:
-  - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Computational fluid dynamics software
-    implemented with OpenCL.
-  - gpu-io (https://github.com/amandaghassaei/gpu-io): A library for running physics simulations in
-    a browser. Implemented with WebGL.
-  - PixelFlow (https://github.com/diwi/PixelFlow): A physics simulation framework based on Java
-    and OpenGL.
+    - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Computational fluid dynamics software
+      implemented with OpenCL.
+    - gpu-io (https://github.com/amandaghassaei/gpu-io): A library for running physics simulations in
+      a browser. Implemented with WebGL.
+    - PixelFlow (https://github.com/diwi/PixelFlow): A physics simulation framework based on Java
+      and OpenGL.
 - Bioinformatics:
-  - genome-spy (https://github.com/genome-spy/genome-spy): Toolkit for analyzing genomic data
-    implemented with WebGL.
-  - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks): CUDA-accelerated DNA
-    analysis and alignment SDK.
+    - genome-spy (https://github.com/genome-spy/genome-spy): Toolkit for analyzing genomic data
+      implemented with WebGL.
+    - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks): CUDA-accelerated DNA
+      analysis and alignment SDK.
 - Cryptography:
-  - hashcat (https://github.com/hashcat/hashcat): Software recovery program implemented with
-    OpenMP, CUDA, and OpenCL.
+    - hashcat (https://github.com/hashcat/hashcat): Software recovery program implemented with
+      OpenMP, CUDA, and OpenCL.
 
 
 Additional Resources
@@ -251,28 +251,28 @@ Projets
 Quelques projets de calculs ;a usage général sur GPU :
 
 - Intelligence artificielle :
-  - burn (https://github.com/tracel-ai/burn) : Cadriciel d'apprentissage profond qui utilise
-    WebGPU pour améliorer la portabilité. Utilise aussi SPIR-V directement pour effectuer certaines
-    optimisations que WebGPU ne supporte pas.
-  - PyTorch (https://github.com/pytorch/pytorch) : Cadriciel d'apprentissage profond qui utilise
-    CUDA et ROCm.
-  - TensorFlow (https://github.com/tensorflow/tensorflow) :  Cadriciel d'apprentissage profond
-    qui utilise CUDA.
+    - burn (https://github.com/tracel-ai/burn) : Cadriciel d'apprentissage profond qui utilise
+      WebGPU pour améliorer la portabilité. Utilise aussi SPIR-V directement pour effectuer certaines
+      optimisations que WebGPU ne supporte pas.
+    - PyTorch (https://github.com/pytorch/pytorch) : Cadriciel d'apprentissage profond qui utilise
+      CUDA et ROCm.
+    - TensorFlow (https://github.com/tensorflow/tensorflow) :  Cadriciel d'apprentissage profond
+      qui utilise CUDA.
 - Physique :
-  - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Programme de dynamique des fluides
-    réalisé avec OpenCL.
-  - gpu-io (https://github.com/amandaghassaei/gpu-io): Bibliothèque de simulation physique
-    utilisable dans un navigateur Web. Réalisé avec WebGL.
-  - PixelFlow (https://github.com/diwi/PixelFlow): Cadriciel de simulation physique réalisé avec
-    Java et OpenGL.
+    - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Programme de dynamique des fluides
+      réalisé avec OpenCL.
+    - gpu-io (https://github.com/amandaghassaei/gpu-io): Bibliothèque de simulation physique
+      utilisable dans un navigateur Web. Réalisé avec WebGL.
+    - PixelFlow (https://github.com/diwi/PixelFlow): Cadriciel de simulation physique réalisé avec
+      Java et OpenGL.
 - Bioinformatique :
-  - genome-spy (https://github.com/genome-spy/genome-spy) : Outils d'analyse génomique réalisé avec
-    WebGL.
-  - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks) : Analyse et alignement
-    d'ADN avec CUDA.
+    - genome-spy (https://github.com/genome-spy/genome-spy) : Outils d'analyse génomique réalisé avec
+      WebGL.
+    - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks) : Analyse et alignement
+      d'ADN avec CUDA.
 - Cryptographie :
-  - hashcat (https://github.com/hashcat/hashcat) : Programme de récupération de mots de passe
-    réalisé avec OpenMP, CUDA et OpenCL.
+    - hashcat (https://github.com/hashcat/hashcat) : Programme de récupération de mots de passe
+      réalisé avec OpenMP, CUDA et OpenCL.
 
 
 Ressources additionnelles
