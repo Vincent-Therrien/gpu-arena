@@ -95,6 +95,40 @@ them.
   computing by AMD. Supports OpenCL, HIP, OpenMP.
 - Slang (https://www.khronos.org/news/press/khronos-group-launches-slang-initiative-hosting-open-source-compiler-contributed-by-nvidia):
   a shading language and compiler that can target multiple APIs.
+- rust-gpu (https://github.com/Rust-GPU/rust-gpu) a framework under development that enables
+  seamless integration of GPU code into Rust code. It's a little like SYCL but for Rust instead of
+  C++, and in contrast to SYCL, rust-gpu supports both general-purpose AND graphics applications.
+  The project is not production-ready as of July 2025.
+
+
+GPU Projects
+------------
+
+Some projects that use general-purpose GPU programming frameworks:
+
+- Artificial Intelligence:
+  - burn (https://github.com/tracel-ai/burn): Deep learning framework that uses WebGPU as its
+    backend for increased portability. It also uses SPIR-V to perform some optimizations that
+    WebGPU does not support.
+  - PyTorch (https://github.com/pytorch/pytorch): Deep learning library that uses CUDA and ROCm for
+    GPU acceleration.
+  - TensorFlow (https://github.com/tensorflow/tensorflow): Deep learning library that uses CUDA for
+    GPU acceleration.
+- Physics:
+  - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Computational fluid dynamics software
+    implemented with OpenCL.
+  - gpu-io (https://github.com/amandaghassaei/gpu-io): A library for running physics simulations in
+    a browser. Implemented with WebGL.
+  - PixelFlow (https://github.com/diwi/PixelFlow): A physics simulation framework based on Java
+    and OpenGL.
+- Bioinformatics:
+  - genome-spy (https://github.com/genome-spy/genome-spy): Toolkit for analyzing genomic data
+    implemented with WebGL.
+  - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks): CUDA-accelerated DNA
+    analysis and alignment SDK.
+- Cryptography:
+  - hashcat (https://github.com/hashcat/hashcat): Software recovery program implemented with
+    OpenMP, CUDA, and OpenCL.
 
 
 Additional Resources
@@ -104,17 +138,6 @@ Additional Resources
   https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
 - Introduction to CUDA and OpenCL programming: https://parlab.eecs.berkeley.edu/sites/all/parlab/files/CatanzaroIntroToCUDAOpenCL_0.pdf.
   Check the slide 27 for a comparison of the lexicon used in the two frameworks.
-
-
-Promising Projects Related to GPUs
-----------------------------------
-
-- ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) enables seamless integration of GPU code into
-  Rust code. It's a little like SYCL but for RUST, but in contrast to SYCL, rust-gpu supports both
-  general-purpose and graphics applications. The project is not ready for production yet.
-- ``burn`` (https://github.com/tracel-ai/burn) is a deep learning framework that uses WebGPU as its
-  backend for increased portability. It also uses SPIR-V to perform some optimizations that WebGPU
-  does not support.
 
 
 Benchmarking
@@ -217,6 +240,39 @@ liens pour en apprendre davantage.
   haute performance par AMD. Supporte OpenCL, HIP, OpenMP.
 - Slang (https://www.khronos.org/news/press/khronos-group-launches-slang-initiative-hosting-open-source-compiler-contributed-by-nvidia):
   un compilateur et langage de nuanceur qui cible plusieurs API.
+- rust-gpu (https://github.com/Rust-GPU/rust-gpu) un cadriciel en développement pour intégrer du
+  code destiné à un GPU dans du code Rust. Similaire à SYCL mais vise Rust au lieu du C++ et permet
+  de développer des applications graphiques. Pas encore prêt pour la production en Juillet 2025.
+
+
+Projets
+-------
+
+Quelques projets de calculs ;a usage général sur GPU :
+
+- Intelligence artificielle :
+  - burn (https://github.com/tracel-ai/burn) : Cadriciel d'apprentissage profond qui utilise
+    WebGPU pour améliorer la portabilité. Utilise aussi SPIR-V directement pour effectuer certaines
+    optimisations que WebGPU ne supporte pas.
+  - PyTorch (https://github.com/pytorch/pytorch) : Cadriciel d'apprentissage profond qui utilise
+    CUDA et ROCm.
+  - TensorFlow (https://github.com/tensorflow/tensorflow) :  Cadriciel d'apprentissage profond
+    qui utilise CUDA.
+- Physique :
+  - FluidX3D (https://github.com/ProjectPhysX/FluidX3D): Programme de dynamique des fluides
+    réalisé avec OpenCL.
+  - gpu-io (https://github.com/amandaghassaei/gpu-io): Bibliothèque de simulation physique
+    utilisable dans un navigateur Web. Réalisé avec WebGL.
+  - PixelFlow (https://github.com/diwi/PixelFlow): Cadriciel de simulation physique réalisé avec
+    Java et OpenGL.
+- Bioinformatique :
+  - genome-spy (https://github.com/genome-spy/genome-spy) : Outils d'analyse génomique réalisé avec
+    WebGL.
+  - GenomeWorks (https://github.com/NVIDIA-Genomics-Research/GenomeWorks) : Analyse et alignement
+    d'ADN avec CUDA.
+- Cryptographie :
+  - hashcat (https://github.com/hashcat/hashcat) : Programme de récupération de mots de passe
+    réalisé avec OpenMP, CUDA et OpenCL.
 
 
 Ressources additionnelles
@@ -226,17 +282,6 @@ Ressources additionnelles
   https://developer.download.nvidia.com/assets/cuda/files/reduction.pdf
 - Introduction à la programmation sur CUDA et OpenCL : https://parlab.eecs.berkeley.edu/sites/all/parlab/files/CatanzaroIntroToCUDAOpenCL_0.pdf.
   Consultez la diapositive 27 pour une comparaison des lexiques utilisés par chaque cadre logiciel.
-
-
-Projets d'intérêt en lien avec les GPU
---------------------------------------
-
-- ``rust-gpu`` (https://github.com/Rust-GPU/rust-gpu) permet d'intégrer des instructions destinées
-  aux GPU dans du code Rust régulier, un peu comme SYCL le permet en C++. Mais rust-gpu supporte,
-  en plus, les applications graphiques. Le projet n,est pas encore prêt pour la production.
-- ``burn`` (https://github.com/tracel-ai/burn) est un cadriciel d'apprentissage profond qui utilise
-  WebGPU pour un portabilité accrue. Il utilise aussi SPIR-V pour appliquer des optimisations non
-  supportées par WebGPU.
 
 
 Comparaisons
